@@ -1,0 +1,551 @@
+{% extends "base.html" %}
+
+{% block title %}Sparkle Home — A Smart Maid & Domestic Home Services Booking Platform{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION WITH INTERACTIVE SEARCH -->
+<section class="relative overflow-hidden bg-gradient-to-b from-brand-50/70 via-white to-slate-50 pt-10 pb-20 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Copy & Value Proposition -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Live Trust Badge -->
+        <div class="inline-flex items-center gap-2 bg-brand-100/90 text-brand-800 border border-brand-200 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+          <span class="w-2.5 h-2.5 rounded-full bg-brand-600 animate-pulse"></span>
+          <span>Verified Domestic Workers • Police & Aadhaar Authenticated</span>
+        </div>
+
+        <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.12]">
+          Your Home, Our Care. <br class="hidden sm:inline"/>
+          <span class="bg-gradient-to-r from-brand-600 via-indigo-600 to-sky-600 bg-clip-text text-transparent">
+            Book Trusted Helpers
+          </span> <br/>
+          at Your Convenience.
+        </h1>
+
+        <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
+          Connect with verified domestic maids, hygienic home cooks, compassionate babysitters, laundry pros, and elderly care attendants. Transparent pricing, zero double-bookings, and flexible hourly or monthly plans.
+        </p>
+
+        <!-- Quick Search Engine Card -->
+        <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-200/90 space-y-3">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-brand-600"></i>
+            <span>Quick Helper Finder</span>
+          </div>
+          
+          <form action="/helpers" method="GET" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-700 mb-1">Select City</label>
+              <select name="city" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="">All Indian Metros</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi NCR">Delhi NCR</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-700 mb-1">Service Required</label>
+              <select name="service" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="">All 6 Domestic Services</option>
+                <option value="house_cleaning">House Cleaning</option>
+                <option value="cooking_services">Cooking Services</option>
+                <option value="dishwashing">Dishwashing</option>
+                <option value="laundry_services">Laundry Services</option>
+                <option value="babysitting">Babysitting & Childcare</option>
+                <option value="elderly_assistance">Elderly Assistance</option>
+              </select>
+            </div>
+
+            <div class="flex items-end">
+              <button type="submit" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-all flex items-center justify-center gap-1.5">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                <span>Find Helpers</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Quick Service Tag Pills -->
+          <div class="pt-2 flex flex-wrap items-center gap-2 text-[11px]">
+            <span class="text-slate-400 font-medium">Popular:</span>
+            <a href="/helpers?service=house_cleaning" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-600 font-medium transition-colors">
+              🧹 Maid Cleaning
+            </a>
+            <a href="/helpers?service=cooking_services" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-600 font-medium transition-colors">
+              🍳 Daily Cook
+            </a>
+            <a href="/helpers?service=babysitting" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-600 font-medium transition-colors">
+              👶 Verified Nanny
+            </a>
+            <a href="/emergency" class="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 border border-red-200 font-bold hover:bg-red-100 transition-colors flex items-center gap-1">
+              <i data-lucide="zap" class="w-3 h-3 text-red-600"></i> SOS Help
+            </a>
+          </div>
+        </div>
+
+        <!-- Metric highlights -->
+        <div class="pt-4 grid grid-cols-3 gap-4 border-t border-slate-200/80">
+          <div>
+            <div class="font-heading font-extrabold text-2xl text-slate-900">12,500+</div>
+            <div class="text-xs text-slate-500 font-medium">Verified Helpers</div>
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-2xl text-brand-600 flex items-center gap-1">
+              <span>4.9★</span>
+              <span class="text-xs font-normal text-slate-500">(38k Reviews)</span>
+            </div>
+            <div class="text-xs text-slate-500 font-medium">Customer Rating</div>
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-2xl text-slate-900">&lt; 60 mins</div>
+            <div class="text-xs text-slate-500 font-medium">Instant Dispatch</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Hero Visual & Real-time Helper Card -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-md">
+          
+          <!-- Decorative Glow -->
+          <div class="absolute -top-10 -right-10 w-72 h-72 bg-brand-400/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-amber-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- Main Interactive Card -->
+          <div class="relative bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 space-y-6">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg">
+                  <i data-lucide="award" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h3 class="font-heading font-bold text-slate-900 text-base">Sparkle Home Guarantee</h3>
+                  <p class="text-xs text-slate-500">Zero Agency Haggling • Fixed Rates</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                Active 24x7
+              </span>
+            </div>
+
+            <!-- Spotlight Worker Snapshot -->
+            <div class="bg-gradient-to-br from-slate-50 to-brand-50/40 p-4 rounded-2xl border border-slate-200/80 space-y-3">
+              <div class="flex items-center gap-3">
+                <img src="{{ featured_workers[0].avatar }}" alt="{{ featured_workers[0].name }}" class="w-14 h-14 rounded-2xl object-cover border-2 border-white shadow-md">
+                <div class="flex-grow">
+                  <div class="flex items-center gap-1.5">
+                    <h4 class="font-heading font-bold text-slate-900 text-sm">{{ featured_workers[0].name }}</h4>
+                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-white">
+                      <i data-lucide="check" class="w-3 h-3 mr-0.5"></i> Verified
+                    </span>
+                  </div>
+                  <p class="text-xs text-slate-500">{{ featured_workers[0].locality }}, {{ featured_workers[0].city }}</p>
+                  <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 mt-1">
+                    <span class="text-amber-500 flex items-center">
+                      <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 inline mr-0.5"></i>
+                      {{ featured_workers[0].rating }}
+                    </span>
+                    <span class="text-slate-300">•</span>
+                    <span>{{ featured_workers[0].experience_years }} yrs experience</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-slate-200/60 text-xs">
+                <div>
+                  <span class="text-slate-400">Starting from</span>
+                  <div class="font-bold text-brand-700 text-sm">₹{{ featured_workers[0].hourly_rate }}/hour</div>
+                </div>
+                <div>
+                  <span class="text-slate-400">Monthly package</span>
+                  <div class="font-bold text-slate-800 text-sm">₹{{ featured_workers[0].monthly_rate }}/mo</div>
+                </div>
+                <a href="/book?worker_id={{ featured_workers[0].id }}" class="px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold shadow-sm transition-colors">
+                  Instant Book
+                </a>
+              </div>
+            </div>
+
+            <!-- 3 Trust Points -->
+            <div class="space-y-2.5 text-xs text-slate-600">
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <span><strong>No Double-Bookings:</strong> Worker availability calendar locks slots in real time.</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <span><strong>Aadhaar & Police Vetted:</strong> Every domestic worker's KYC is verified before listing.</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <span><strong>Secure Payments & OTP:</strong> Pay via UPI, Cards or Cash with OTP service start.</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="/helpers" class="w-full block text-center py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs tracking-wide uppercase transition-colors shadow-lg">
+                View All 12+ Available Domestic Helpers →
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6 CORE DOMESTIC SERVICES SECTION -->
+<section class="py-20 bg-white border-t border-slate-200/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
+        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+        <span>Complete Domestic Catalog</span>
+      </div>
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight">
+        6 Pillars of Sparkle Home Care
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base">
+        Select from specialized domestic assistance designed to handle every daily household chore with verified care.
+      </p>
+    </div>
+
+    <!-- Grid of 6 Services -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for s in services %}
+      <div class="group bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-brand-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        
+        <div>
+          <!-- Service Header with Icon & Badge -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-600/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="{{ s.icon }}" class="w-6 h-6"></i>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+              {{ s.badge }}
+            </span>
+          </div>
+
+          <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">
+            {{ s.name }}
+          </h3>
+          <p class="text-xs font-medium text-brand-700 mt-1 mb-3">
+            {{ s.tagline }}
+          </p>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            {{ s.description }}
+          </p>
+
+          <!-- Checklist of Tasks Included -->
+          <div class="space-y-1.5 mb-6 bg-white/80 p-3 rounded-2xl border border-slate-200/60">
+            <span class="text-[11px] font-bold text-slate-700 block mb-1">What's Included:</span>
+            {% for task in s.tasks[:3] %}
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>{{ task }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Pricing & Book CTA -->
+        <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between">
+          <div>
+            <div class="text-[11px] text-slate-400">Hourly / Monthly</div>
+            <div class="text-sm font-extrabold text-slate-900">
+              ₹{{ s.hourly_rate }}<span class="text-xs font-normal text-slate-500">/hr</span>
+              <span class="text-slate-300 font-light mx-1">|</span>
+              <span class="text-brand-700">₹{{ s.monthly_rate }}</span><span class="text-xs font-normal text-slate-500">/mo</span>
+            </div>
+          </div>
+          <a href="/book?service_id={{ s.id }}" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-brand-600 transition-colors shadow-sm">
+            Book Service
+          </a>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURED VERIFIED DOMESTIC HELPERS -->
+<section class="py-20 bg-slate-50 border-t border-slate-200/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 mb-2">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+          <span>100% Background & Police Checked</span>
+        </div>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight">
+          Featured Domestic Helpers
+        </h2>
+        <p class="text-slate-600 text-sm mt-1">
+          Browse top-rated maids, cooks, and nannies available in your neighborhood.
+        </p>
+      </div>
+
+      <a href="/helpers" class="inline-flex items-center gap-2 text-xs font-bold text-brand-600 hover:text-brand-800 bg-white border border-slate-200 px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all">
+        <span>Explore All Domestic Helpers ({{ all_workers|length }})</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+
+    <!-- Workers Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {% for w in featured_workers %}
+      <div class="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between">
+        
+        <div>
+          <!-- Photo & Status -->
+          <div class="relative mb-4">
+            <img src="{{ w.avatar }}" alt="{{ w.name }}" class="w-full h-44 rounded-2xl object-cover shadow-inner">
+            <div class="absolute top-3 left-3">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/85 backdrop-blur-md text-white">
+                <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                {{ w.city }}
+              </span>
+            </div>
+            <div class="absolute top-3 right-3">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm">
+                <i data-lucide="check" class="w-3 h-3"></i> Verified
+              </span>
+            </div>
+          </div>
+
+          <!-- Name & Details -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <h3 class="font-heading font-bold text-base text-slate-900">{{ w.name }}</h3>
+              <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <span>{{ w.rating }}</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 flex items-center gap-1">
+              <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+              {{ w.locality }}
+            </p>
+            <p class="text-[11px] text-slate-600 line-clamp-2 pt-1">
+              {{ w.bio }}
+            </p>
+          </div>
+
+          <!-- Languages & Experience -->
+          <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+            <span>{{ w.experience_years }} yrs experience</span>
+            <span class="text-slate-400">{{ w.languages[0] }} + {{ w.languages|length - 1 }}</span>
+          </div>
+        </div>
+
+        <!-- Price & Action -->
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+          <div>
+            <div class="text-[10px] text-slate-400">Hourly Rate</div>
+            <div class="text-sm font-extrabold text-slate-900">₹{{ w.hourly_rate }}<span class="text-[10px] font-normal text-slate-500">/hr</span></div>
+          </div>
+          <a href="/book?worker_id={{ w.id }}" class="px-3 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 transition-colors shadow-sm">
+            Book Maid
+          </a>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<!-- PROBLEM VS SPARKLE HOME COMPARISON -->
+<section class="py-20 bg-white border-t border-slate-200/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight">
+        Why Switch to Sparkle Home?
+      </h2>
+      <p class="text-slate-600 text-sm">
+        See how our digital platform solves the traditional frustrations of hiring domestic helpers.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      
+      <!-- Traditional Methods Card -->
+      <div class="bg-red-50/60 rounded-3xl p-6 sm:p-8 border border-red-200/80 space-y-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center font-bold">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-lg text-slate-900">Traditional Maid Hiring</h3>
+            <p class="text-xs text-red-700">Word-of-mouth & unorganized local agents</p>
+          </div>
+        </div>
+
+        <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
+          <li class="flex items-start gap-2.5">
+            <span class="text-red-500 font-bold">✕</span>
+            <span><strong>No Verification:</strong> No Aadhaar or police records; constant safety and security anxiety.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-red-500 font-bold">✕</span>
+            <span><strong>Arbitrary Pricing:</strong> Random demands, zero price standardization or transparency.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-red-500 font-bold">✕</span>
+            <span><strong>Zero Accountability:</strong> Sudden unannounced leaves, no replacement backup or customer support.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-red-500 font-bold">✕</span>
+            <span><strong>Scheduling Chaos:</strong> Double-bookings, erratic arrival timings, and informal payment disputes.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sparkle Home Solution Card -->
+      <div class="bg-emerald-50/60 rounded-3xl p-6 sm:p-8 border border-emerald-200/80 space-y-5 shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+            <i data-lucide="check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-lg text-slate-900">Sparkle Home Platform</h3>
+            <p class="text-xs text-emerald-800">Verified, transparent, and technology-driven</p>
+          </div>
+        </div>
+
+        <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>100% Police Verified:</strong> Government ID, address verification, and police clearance on file.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Transparent Upfront Pricing:</strong> Fixed hourly (₹149-₹299/hr) and monthly rates before booking.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Guaranteed Attendance & Backups:</strong> Automated replacement helper dispatch if primary worker is unwell.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span><strong>Real-time Slot Booking:</strong> Locked calendars, OTP verified start, and secure Razorpay/Cash options.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS: 4-STEP WORKFLOW -->
+<section class="py-20 bg-slate-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-900 text-brand-300 border border-brand-700">
+        <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+        <span>Simple 60-Second Process</span>
+      </div>
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+        How Sparkle Home Works
+      </h2>
+      <p class="text-slate-400 text-sm">
+        From search to spotless home in 4 seamless digital steps.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Step 1 -->
+      <div class="bg-slate-800/70 border border-slate-700/80 rounded-3xl p-6 relative">
+        <div class="text-4xl font-extrabold text-brand-500/40 mb-3 font-mono">01</div>
+        <h3 class="font-heading font-bold text-lg text-white mb-2">Select Service</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Choose from House Cleaning, Cooking, Dishwashing, Laundry, Babysitting, or Elderly Assistance.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="bg-slate-800/70 border border-slate-700/80 rounded-3xl p-6 relative">
+        <div class="text-4xl font-extrabold text-brand-500/40 mb-3 font-mono">02</div>
+        <h3 class="font-heading font-bold text-lg text-white mb-2">Pick Verified Helper</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Filter by your locality, compare verified credentials, read genuine customer reviews and rates.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="bg-slate-800/70 border border-slate-700/80 rounded-3xl p-6 relative">
+        <div class="text-4xl font-extrabold text-brand-500/40 mb-3 font-mono">03</div>
+        <h3 class="font-heading font-bold text-lg text-white mb-2">Schedule & Pay</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Select preferred date and morning/evening time slot. Pay securely via Razorpay UPI, Card, or Cash.
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="bg-slate-800/70 border border-slate-700/80 rounded-3xl p-6 relative">
+        <div class="text-4xl font-extrabold text-brand-500/40 mb-3 font-mono">04</div>
+        <h3 class="font-heading font-bold text-lg text-white mb-2">Service & Review</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Helper arrives on time, verifies OTP, performs tasks with excellence. Rate and review after service.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- CTA inside dark section -->
+    <div class="mt-12 text-center">
+      <a href="/book" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-xl shadow-brand-600/30 transition-all hover:scale-105">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>Book Your First Domestic Helper Now</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EMERGENCY SOS BANNER -->
+<section class="py-12 bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-inner">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-4">
+      <div class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0 text-white">
+        <i data-lucide="alarm-clock" class="w-7 h-7"></i>
+      </div>
+      <div>
+        <h3 class="font-heading font-extrabold text-2xl text-white">Need Urgent Domestic Help in 60 Minutes?</h3>
+        <p class="text-red-100 text-xs sm:text-sm mt-0.5">
+          Surprise guests or regular maid absent? Tap our emergency dispatch for rapid helper arrival.
+        </p>
+      </div>
+    </div>
+    <a href="/emergency" class="px-6 py-3 rounded-2xl bg-white text-red-700 hover:bg-red-50 font-bold text-xs sm:text-sm shadow-lg whitespace-nowrap transition-colors flex items-center gap-2">
+      <i data-lucide="zap" class="w-4 h-4 text-red-600"></i>
+      <span>Request 1-Hour Emergency Maid</span>
+    </a>
+  </div>
+</section>
+
+{% endblock %}

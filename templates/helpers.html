@@ -1,0 +1,365 @@
+{% extends "base.html" %}
+
+{% block title %}Find Verified Domestic Helpers — Sparkle Home{% endblock %}
+
+{% block content %}
+<div class="bg-slate-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl space-y-2">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+        <span>100% Police & Identity Verified Helpers</span>
+      </span>
+      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+        Find Domestic Helpers & Maids Near You
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm">
+        Compare profiles, hourly rates, languages spoken, and genuine client ratings.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- LEFT FILTER SIDEBAR -->
+    <div class="lg:col-span-3">
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-6 sticky top-28">
+        
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <h3 class="font-heading font-bold text-slate-900 text-base flex items-center gap-2">
+            <i data-lucide="sliders" class="w-4 h-4 text-brand-600"></i>
+            <span>Filter Helpers</span>
+          </h3>
+          <button id="reset-filters" class="text-xs text-brand-600 hover:underline font-semibold">
+            Reset
+          </button>
+        </div>
+
+        <!-- City Filter -->
+        <div class="space-y-2">
+          <label class="block text-xs font-bold text-slate-700">Metro City</label>
+          <select id="filter-city" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <option value="">All Cities</option>
+            <option value="Hyderabad" {% if selected_city == 'Hyderabad' %}selected{% endif %}>Hyderabad</option>
+            <option value="Bengaluru" {% if selected_city == 'Bengaluru' %}selected{% endif %}>Bengaluru</option>
+            <option value="Mumbai" {% if selected_city == 'Mumbai' %}selected{% endif %}>Mumbai</option>
+            <option value="Delhi NCR" {% if selected_city == 'Delhi NCR' %}selected{% endif %}>Delhi NCR</option>
+          </select>
+        </div>
+
+        <!-- Service Filter -->
+        <div class="space-y-2">
+          <label class="block text-xs font-bold text-slate-700">Service Required</label>
+          <select id="filter-service" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <option value="">All Services</option>
+            <option value="house_cleaning" {% if selected_service == 'house_cleaning' %}selected{% endif %}>House Cleaning</option>
+            <option value="cooking_services" {% if selected_service == 'cooking_services' %}selected{% endif %}>Cooking Services</option>
+            <option value="dishwashing" {% if selected_service == 'dishwashing' %}selected{% endif %}>Dishwashing</option>
+            <option value="laundry_services" {% if selected_service == 'laundry_services' %}selected{% endif %}>Laundry Services</option>
+            <option value="babysitting" {% if selected_service == 'babysitting' %}selected{% endif %}>Babysitting & Childcare</option>
+            <option value="elderly_assistance" {% if selected_service == 'elderly_assistance' %}selected{% endif %}>Elderly Assistance</option>
+          </select>
+        </div>
+
+        <!-- Max Hourly Rate Slider -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-700">
+            <span>Max Hourly Rate</span>
+            <span id="rate-display" class="text-brand-600 font-extrabold">₹350/hr</span>
+          </div>
+          <input type="range" id="filter-rate" min="150" max="350" step="10" value="350" class="w-full accent-brand-600 cursor-pointer">
+          <div class="flex justify-between text-[10px] text-slate-400">
+            <span>₹150</span>
+            <span>₹250</span>
+            <span>₹350</span>
+          </div>
+        </div>
+
+        <!-- Trust Badges Checkbox -->
+        <div class="pt-4 border-t border-slate-100 space-y-2.5">
+          <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-700 font-medium">
+            <input type="checkbox" id="filter-verified" checked class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+            <span>Police & Aadhaar Verified Only</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-700 font-medium">
+            <input type="checkbox" id="filter-available" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+            <span>Available Today Only</span>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT WORKERS GRID -->
+    <div class="lg:col-span-9 space-y-6">
+      
+      <!-- Top Results Bar -->
+      <div class="flex items-center justify-between bg-white px-5 py-3 rounded-2xl border border-slate-200">
+        <div class="text-xs font-semibold text-slate-600">
+          Showing <span id="worker-count" class="font-bold text-slate-900">{{ workers|length }}</span> verified helpers
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-slate-400">Sort by:</span>
+          <select id="sort-select" class="text-xs font-bold text-slate-700 border-none bg-transparent focus:outline-none cursor-pointer">
+            <option value="rating">Highest Rated</option>
+            <option value="price_low">Lowest Price</option>
+            <option value="experience">Experience</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Workers Cards Container -->
+      <div id="workers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for w in workers %}
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="{{ w.id }}"
+             data-city="{{ w.city }}"
+             data-services="{{ w.services|join(',') }}"
+             data-rate="{{ w.hourly_rate }}"
+             data-rating="{{ w.rating }}"
+             data-experience="{{ w.experience_years }}"
+             data-verified="{{ 'true' if w.verified else 'false' }}"
+             data-available="{{ 'true' if w.available_now else 'false' }}">
+          
+          <div>
+            <!-- Header Image & Badges -->
+            <div class="relative mb-4">
+              <img src="{{ w.avatar }}" alt="{{ w.name }}" class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  {{ w.city }}
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <!-- Basic Info -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">{{ w.name }}</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>{{ w.rating }}</span>
+                  <span class="text-slate-400 font-normal">({{ w.reviews_count }})</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                {{ w.locality }}
+              </p>
+            </div>
+
+            <!-- Services Pills -->
+            <div class="flex flex-wrap gap-1.5 my-3">
+              {% for s in w.services %}
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                {{ s.replace('_', ' ') }}
+              </span>
+              {% endfor %}
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              {{ w.bio }}
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">{{ w.experience_years }} yrs experience</span>
+              <span>{{ w.languages|join(', ') }}</span>
+            </div>
+          </div>
+
+          <!-- Bottom Price & Buttons -->
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹{{ w.hourly_rate }}<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('{{ w.id }}')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id={{ w.id }}" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- WORKER PROFILE MODAL -->
+<div id="worker-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-6">
+    
+    <button onclick="closeWorkerModal()" class="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Modal Header -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+      <img id="m-avatar" src="" alt="Worker" class="w-20 h-20 rounded-2xl object-cover border-2 border-brand-500 shadow-md">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <h2 id="m-name" class="font-heading font-extrabold text-2xl text-slate-900">Name</h2>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-white">
+            ✓ Aadhaar & Police Verified
+          </span>
+        </div>
+        <p id="m-loc" class="text-xs text-slate-500">Locality, City</p>
+        <div class="flex items-center gap-3 text-xs font-bold text-slate-700 pt-1">
+          <span class="text-amber-500 flex items-center gap-1">
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <span id="m-rating">4.9</span>
+          </span>
+          <span class="text-slate-300">•</span>
+          <span id="m-exp">7 yrs Experience</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bio & Verification Badges -->
+    <div class="space-y-3">
+      <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">About Helper</h4>
+      <p id="m-bio" class="text-xs text-slate-600 leading-relaxed"></p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
+        <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-2">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+          <span>Police Record: Clean</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-800 text-xs font-semibold flex items-center gap-2">
+          <i data-lucide="file-check" class="w-4 h-4 text-blue-600"></i>
+          <span>Aadhaar: Verified</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold flex items-center gap-2">
+          <i data-lucide="clock" class="w-4 h-4 text-amber-600"></i>
+          <span>Zero Double-Booking</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing & Booking Trigger -->
+    <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <div class="text-xs text-slate-400">Transparent Pricing</div>
+        <div class="text-lg font-extrabold text-slate-900">
+          <span id="m-hourly">₹220</span><span class="text-xs font-normal text-slate-500">/hr</span>
+          <span class="text-slate-300 mx-2">|</span>
+          <span id="m-monthly" class="text-brand-600">₹4,200</span><span class="text-xs font-normal text-slate-500">/mo</span>
+        </div>
+      </div>
+      <a id="m-book-btn" href="#" class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs uppercase tracking-wider text-center shadow-md transition-colors">
+        Proceed to Book This Helper →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  const workersData = {{ workers|tojson }};
+
+  function openWorkerModal(workerId) {
+    const worker = workersData.find(w => w.id === workerId);
+    if (!worker) return;
+
+    document.getElementById('m-avatar').src = worker.avatar;
+    document.getElementById('m-name').textContent = worker.name;
+    document.getElementById('m-loc').textContent = `${worker.locality}, ${worker.city}`;
+    document.getElementById('m-rating').textContent = worker.rating;
+    document.getElementById('m-exp').textContent = `${worker.experience_years} Years Experience`;
+    document.getElementById('m-bio').textContent = worker.bio;
+    document.getElementById('m-hourly').textContent = `₹${worker.hourly_rate}`;
+    document.getElementById('m-monthly').textContent = `₹${worker.monthly_rate}`;
+    document.getElementById('m-book-btn').href = `/book?worker_id=${worker.id}`;
+
+    document.getElementById('worker-modal').classList.remove('hidden');
+    lucide.createIcons();
+  }
+
+  function closeWorkerModal() {
+    document.getElementById('worker-modal').classList.add('hidden');
+  }
+
+  // Live Client-Side Filtering
+  const filterCity = document.getElementById('filter-city');
+  const filterService = document.getElementById('filter-service');
+  const filterRate = document.getElementById('filter-rate');
+  const rateDisplay = document.getElementById('rate-display');
+  const filterVerified = document.getElementById('filter-verified');
+  const filterAvailable = document.getElementById('filter-available');
+  const sortSelect = document.getElementById('sort-select');
+  const workerCards = document.querySelectorAll('.worker-card');
+  const workerCount = document.getElementById('worker-count');
+
+  function applyFilters() {
+    const city = filterCity.value.toLowerCase();
+    const service = filterService.value;
+    const maxRate = parseInt(filterRate.value);
+    const verifiedOnly = filterVerified.checked;
+    const availableOnly = filterAvailable.checked;
+
+    rateDisplay.textContent = `₹${maxRate}/hr`;
+
+    let visibleCount = 0;
+
+    workerCards.forEach(card => {
+      const cCity = card.dataset.city.toLowerCase();
+      const cServices = card.dataset.services.split(',');
+      const cRate = parseInt(card.dataset.rate);
+      const cVerified = card.dataset.verified === 'true';
+      const cAvailable = card.dataset.available === 'true';
+
+      let match = true;
+      if (city && !cCity.includes(city)) match = false;
+      if (service && !cServices.includes(service)) match = false;
+      if (cRate > maxRate) match = false;
+      if (verifiedOnly && !cVerified) match = false;
+      if (availableOnly && !cAvailable) match = false;
+
+      if (match) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    workerCount.textContent = visibleCount;
+  }
+
+  filterCity.addEventListener('change', applyFilters);
+  filterService.addEventListener('change', applyFilters);
+  filterRate.addEventListener('input', applyFilters);
+  filterVerified.addEventListener('change', applyFilters);
+  filterAvailable.addEventListener('change', applyFilters);
+
+  document.getElementById('reset-filters').addEventListener('click', () => {
+    filterCity.value = '';
+    filterService.value = '';
+    filterRate.value = 350;
+    filterVerified.checked = false;
+    filterAvailable.checked = false;
+    applyFilters();
+  });
+
+  // Run on load
+  applyFilters();
+</script>
+{% endblock %}

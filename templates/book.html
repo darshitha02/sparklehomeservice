@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+
+{% block title %}Book Domestic Service — Sparkle Home{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-b from-brand-50/60 to-white py-10 border-b border-slate-200">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-2">
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 text-brand-800">
+      <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-600"></i>
+      <span>Guaranteed Verified Helper</span>
+    </span>
+    <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900">
+      Schedule Your Domestic Service
+    </h1>
+    <p class="text-slate-600 text-xs sm:text-sm">
+      Transparent pricing, conflict-free scheduling, and secure digital or cash payment.
+    </p>
+  </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    
+    <!-- MAIN BOOKING FORM -->
+    <div class="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-8">
+      
+      <form id="booking-form" class="space-y-6">
+        
+        <!-- STEP 1: SERVICE & FREQUENCY -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+            <span class="w-6 h-6 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center">1</span>
+            <h3 class="font-heading font-bold text-slate-900 text-base">Select Service & Frequency</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Service Required *</label>
+              <select id="book-service" required class="w-full text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                {% for s in services %}
+                <option value="{{ s.id }}" data-hourly="{{ s.hourly_rate }}" data-monthly="{{ s.monthly_rate }}" {% if preselected_service == s.id %}selected{% endif %}>
+                  {{ s.name }} (₹{{ s.hourly_rate }}/hr)
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Booking Frequency *</label>
+              <select id="book-plan" class="w-full text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="One-Time Booking">One-Time On-Demand (2-3 Hours)</option>
+                <option value="Daily Recurring (Monthly)">Daily Maid Plan (Monthly Subscription)</option>
+                <option value="Weekly Clean (4 Weeks)">Weekly Deep Clean (4 Visits)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: ASSIGNED HELPER -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+            <span class="w-6 h-6 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center">2</span>
+            <h3 class="font-heading font-bold text-slate-900 text-base">Helper Preference</h3>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Select Helper</label>
+            <select id="book-worker" class="w-full text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+              <option value="">⚡ Auto-Assign Nearest Available Verified Helper</option>
+              {% for w in workers %}
+              <option value="{{ w.id }}" {% if selected_worker and selected_worker.id == w.id %}selected{% endif %}>
+                {{ w.name }} ({{ w.city }} • {{ w.rating }}★ • ₹{{ w.hourly_rate }}/hr)
+              </option>
+              {% endfor %}
+            </select>
+            <p class="text-[11px] text-slate-500 mt-1">
+              All helpers carry valid Aadhaar, police verification, and undergo background verification.
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 3: SCHEDULE DATE & TIME SLOT -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+            <span class="w-6 h-6 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center">3</span>
+            <h3 class="font-heading font-bold text-slate-900 text-base">Date & Preferred Slot</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Service Date *</label>
+              <input type="date" id="book-date" required class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Time Window *</label>
+              <select id="book-slot" required class="w-full text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="07:00 AM - 09:30 AM">Morning: 07:00 AM - 09:30 AM</option>
+                <option value="10:00 AM - 12:30 PM">Mid-day: 10:00 AM - 12:30 PM</option>
+                <option value="02:00 PM - 04:30 PM">Afternoon: 02:00 PM - 04:30 PM</option>
+                <option value="05:30 PM - 08:00 PM">Evening: 05:30 PM - 08:00 PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: CONTACT & ADDRESS -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+            <span class="w-6 h-6 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center">4</span>
+            <h3 class="font-heading font-bold text-slate-900 text-base">Household Location & Details</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Your Full Name *</label>
+              <input type="text" id="cust-name" required placeholder="e.g. Ramesh Kumar" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Number (For OTP) *</label>
+              <input type="tel" id="cust-phone" required placeholder="e.g. 9876543210" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">House Address / Flat No. & Landmark *</label>
+            <textarea id="cust-address" required rows="2" placeholder="e.g. Flat 304, Green Heights, Kondapur, Hyderabad" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Special Cooking / Cleaning Instructions (Optional)</label>
+            <input type="text" id="cust-instructions" placeholder="e.g. Please bring mild detergent; child asleep till 8 AM" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+        </div>
+
+        <!-- STEP 5: PAYMENT SELECTION -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+            <span class="w-6 h-6 rounded-full bg-brand-600 text-white font-bold text-xs flex items-center justify-center">5</span>
+            <h3 class="font-heading font-bold text-slate-900 text-base">Payment Method</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="flex items-center gap-2 p-3 rounded-2xl border border-brand-500 bg-brand-50/50 cursor-pointer">
+              <input type="radio" name="payment_method" value="UPI (Razorpay)" checked class="text-brand-600">
+              <div class="text-xs">
+                <span class="font-bold block text-slate-900">UPI Instant</span>
+                <span class="text-slate-500 text-[10px]">GPay / PhonePe / Paytm</span>
+              </div>
+            </label>
+
+            <label class="flex items-center gap-2 p-3 rounded-2xl border border-slate-200 hover:border-brand-300 cursor-pointer">
+              <input type="radio" name="payment_method" value="Credit/Debit Card" class="text-brand-600">
+              <div class="text-xs">
+                <span class="font-bold block text-slate-900">Cards</span>
+                <span class="text-slate-500 text-[10px]">Visa / Mastercard</span>
+              </div>
+            </label>
+
+            <label class="flex items-center gap-2 p-3 rounded-2xl border border-slate-200 hover:border-brand-300 cursor-pointer">
+              <input type="radio" name="payment_method" value="Cash on Delivery" class="text-brand-600">
+              <div class="text-xs">
+                <span class="font-bold block text-slate-900">Pay After Service</span>
+                <span class="text-slate-500 text-[10px]">Cash to Helper</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-heading font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-brand-600/30 transition-all hover:scale-[1.01]">
+          Confirm & Book Verified Helper Now →
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- RIGHT SUMMARY CARD -->
+    <div class="lg:col-span-4 bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-6 sticky top-28">
+      
+      <div class="pb-3 border-b border-slate-100 flex items-center justify-between">
+        <h3 class="font-heading font-bold text-slate-900 text-base">Fare Breakdown</h3>
+        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">100% Transparent</span>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-600">
+        <div class="flex justify-between">
+          <span>Service Base Fare</span>
+          <span id="summary-base" class="font-bold text-slate-900">₹398</span>
+        </div>
+        <div class="flex justify-between">
+          <span>Platform & Safety Fee</span>
+          <span class="font-bold text-slate-900">₹29</span>
+        </div>
+        <div class="flex justify-between">
+          <span>Taxes & GST (5%)</span>
+          <span id="summary-tax" class="font-bold text-slate-900">₹20</span>
+        </div>
+        <div class="pt-3 border-t border-slate-200 flex justify-between items-center text-sm font-extrabold text-slate-900">
+          <span>Total Payable</span>
+          <span id="summary-total" class="text-xl text-brand-600">₹447</span>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-2 text-[11px] text-slate-600">
+        <div class="flex items-center gap-2 font-bold text-slate-800">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+          <span>Sparkle Home Care Guarantee</span>
+        </div>
+        <p>
+          • 4-Digit OTP ensures only your assigned helper enters.<br>
+          • No cancellation charges if cancelled 2 hrs before.<br>
+          • Automated replacement maid if assigned helper is sick.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- CONFIRMATION SUCCESS MODAL -->
+<div id="booking-success-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl text-center space-y-5 animate-scale">
+    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+      <i data-lucide="check" class="w-8 h-8"></i>
+    </div>
+    
+    <div>
+      <h3 class="font-heading font-extrabold text-2xl text-slate-900">Booking Confirmed!</h3>
+      <p class="text-xs text-slate-500 mt-1">Your domestic service has been scheduled successfully.</p>
+    </div>
+
+    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 text-left space-y-2 text-xs">
+      <div class="flex justify-between border-b border-slate-200/70 pb-1.5">
+        <span class="text-slate-400">Booking Reference:</span>
+        <span id="res-booking-id" class="font-mono font-bold text-brand-700">SH-XXXX</span>
+      </div>
+      <div class="flex justify-between border-b border-slate-200/70 pb-1.5">
+        <span class="text-slate-400">Start Service OTP:</span>
+        <span id="res-otp" class="font-mono font-extrabold text-emerald-600 text-sm">9999</span>
+      </div>
+      <div class="flex justify-between border-b border-slate-200/70 pb-1.5">
+        <span class="text-slate-400">Assigned Helper:</span>
+        <span id="res-worker" class="font-bold text-slate-800">Helper Name</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Total Amount:</span>
+        <span id="res-amount" class="font-bold text-slate-900">₹447</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-2 pt-2">
+      <a href="/bookings" class="w-full py-3 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs uppercase tracking-wider transition-colors">
+        Track in My Bookings →
+      </a>
+      <a href="/" class="w-full py-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors">
+        Return to Home
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  // Set default date to tomorrow
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  document.getElementById('book-date').value = tomorrow.toISOString().split('T')[0];
+
+  const serviceSelect = document.getElementById('book-service');
+  const planSelect = document.getElementById('book-plan');
+  const baseSummary = document.getElementById('summary-base');
+  const taxSummary = document.getElementById('summary-tax');
+  const totalSummary = document.getElementById('summary-total');
+
+  function calculateFare() {
+    const selectedOpt = serviceSelect.options[serviceSelect.selectedIndex];
+    const hourly = parseInt(selectedOpt.dataset.hourly || 199);
+    const monthly = parseInt(selectedOpt.dataset.monthly || 3500);
+    const plan = planSelect.value;
+
+    let base = 0;
+    if (plan.includes('Monthly')) {
+      base = monthly;
+    } else if (plan.includes('Weekly')) {
+      base = hourly * 8; // 4 sessions of 2 hrs
+    } else {
+      base = hourly * 2; // standard 2 hr session
+    }
+
+    const platformFee = 29;
+    const tax = Math.round(base * 0.05);
+    const total = base + platformFee + tax;
+
+    baseSummary.textContent = `₹${base}`;
+    taxSummary.textContent = `₹${tax}`;
+    totalSummary.textContent = `₹${total}`;
+  }
+
+  serviceSelect.addEventListener('change', calculateFare);
+  planSelect.addEventListener('change', calculateFare);
+  calculateFare();
+
+  // Form Submit Handler
+  document.getElementById('booking-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      service_id: serviceSelect.value,
+      plan_type: planSelect.value,
+      worker_id: document.getElementById('book-worker').value,
+      date: document.getElementById('book-date').value,
+      time_slot: document.getElementById('book-slot').value,
+      customer_name: document.getElementById('cust-name').value,
+      customer_phone: document.getElementById('cust-phone').value,
+      customer_address: document.getElementById('cust-address').value,
+      special_instructions: document.getElementById('cust-instructions').value,
+      payment_method: document.querySelector('input[name="payment_method"]:checked').value
+    };
+
+    try {
+      const res = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        document.getElementById('res-booking-id').textContent = data.booking.id;
+        document.getElementById('res-otp').textContent = data.booking.otp;
+        document.getElementById('res-worker').textContent = data.booking.worker_name;
+        document.getElementById('res-amount').textContent = `₹${data.booking.total_amount}`;
+
+        document.getElementById('booking-success-modal').classList.remove('hidden');
+        lucide.createIcons();
+      } else {
+        alert(data.error || 'Failed to process booking.');
+      }
+    } catch (err) {
+      alert('Network error. Please try again.');
+    }
+  });
+</script>
+{% endblock %}

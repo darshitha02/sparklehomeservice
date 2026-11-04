@@ -1,0 +1,20 @@
+[
+  {
+    "id": "DISP-101",
+    "booking_id": "SH-7809",
+    "customer_name": "Pooja Hegde",
+    "subject": "Delayed Arrival Notification",
+    "details": "Worker arrived 25 minutes late due to metro breakdown. Resolved amicably with extra 30 mins work.",
+    "status": "Resolved",
+    "date": "2026-11-02"
+  },
+  {
+    "id": "DISP-102",
+    "booking_id": "SH-7818",
+    "customer_name": "Rajesh Gupta",
+    "subject": "Reschedule Request",
+    "details": "Customer requested slot postponement from 8 AM to 11 AM due to flight delay.",
+    "status": "Pending Admin Approval",
+    "date": "2026-11-04"
+  }
+]

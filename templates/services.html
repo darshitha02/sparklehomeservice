@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Domestic Services Catalog — Sparkle Home{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-b from-brand-50/60 to-white py-12 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 text-brand-800">
+      <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-600"></i>
+      <span>Transparent Hourly & Monthly Rates</span>
+    </span>
+    <h1 class="font-heading font-extrabold text-4xl sm:text-5xl text-slate-900 tracking-tight">
+      Domestic Services Built for Indian Homes
+    </h1>
+    <p class="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
+      From daily floor sweeping and authentic home-cooked meals to tender infant supervision and senior care.
+    </p>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for s in services %}
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between">
+      
+      <div>
+        <div class="flex items-center justify-between mb-5">
+          <div class="w-14 h-14 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-600/25">
+            <i data-lucide="{{ s.icon }}" class="w-7 h-7"></i>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
+            {{ s.badge }}
+          </span>
+        </div>
+
+        <h3 class="font-heading font-bold text-2xl text-slate-900 mb-1">{{ s.name }}</h3>
+        <p class="text-xs font-semibold text-brand-600 mb-3">{{ s.tagline }}</p>
+        <p class="text-xs text-slate-600 leading-relaxed mb-6">{{ s.description }}</p>
+
+        <div class="space-y-2 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200/70">
+          <span class="text-xs font-bold text-slate-800 block mb-2">Scope of Work:</span>
+          {% for task in s.tasks %}
+          <div class="flex items-start gap-2 text-xs text-slate-600">
+            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+            <span>{{ task }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="pt-5 border-t border-slate-100 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-[11px] text-slate-400 font-medium">Hourly On-Demand</div>
+            <div class="text-lg font-extrabold text-slate-900">₹{{ s.hourly_rate }}<span class="text-xs font-normal text-slate-500">/hr</span></div>
+          </div>
+          <div class="text-right">
+            <div class="text-[11px] text-slate-400 font-medium">Monthly Plan</div>
+            <div class="text-lg font-extrabold text-brand-700">₹{{ s.monthly_rate }}<span class="text-xs font-normal text-slate-500">/mo</span></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <a href="/helpers?service={{ s.id }}" class="py-2.5 px-3 rounded-xl text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+            View Maids
+          </a>
+          <a href="/book?service_id={{ s.id }}" class="py-2.5 px-3 rounded-xl text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+            Book Now
+          </a>
+        </div>
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

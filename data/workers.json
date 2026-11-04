@@ -1,0 +1,353 @@
+[
+  {
+    "id": "w_101",
+    "name": "Lakshmi Devi",
+    "age": 34,
+    "gender": "Female",
+    "city": "Hyderabad",
+    "locality": "Hitec City / Madhapur",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+    "experience_years": 7,
+    "rating": 4.95,
+    "reviews_count": 148,
+    "verified": true,
+    "police_verified": true,
+    "aadhaar_verified": true,
+    "badge": "Top Rated Helper",
+    "services": [
+      "house_cleaning",
+      "cooking_services",
+      "dishwashing"
+    ],
+    "languages": [
+      "Telugu",
+      "Hindi",
+      "English (Basic)"
+    ],
+    "hourly_rate": 220,
+    "monthly_rate": 4200,
+    "availability_status": "Available Today",
+    "available_now": true,
+    "slots": [
+      "07:00 AM - 10:00 AM",
+      "12:00 PM - 03:00 PM",
+      "05:00 PM - 08:00 PM"
+    ],
+    "bio": "Expert home cook and meticulous cleaner with 7 years of trusted service in apartments across Hitec City. Known for punctual arrival and authentic Telugu & North Indian dishes.",
+    "reviews": [
+      {
+        "user": "Sneha Reddy",
+        "rating": 5,
+        "comment": "Lakshmi garu is an absolute blessing! Her cooking is delicious and she leaves the house spotless.",
+        "date": "Yesterday"
+      },
+      {
+        "user": "Arun Kumar",
+        "rating": 5,
+        "comment": "Extremely punctual and trustworthy. We have booked her monthly package for 4 months now.",
+        "date": "3 days ago"
+      }
+    ]
+  },
+  {
+    "id": "w_102",
+    "name": "Sunita Sharma",
+    "age": 29,
+    "gender": "Female",
+    "city": "Bengaluru",
+    "locality": "Koramangala / HSR Layout",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
+    "experience_years": 5,
+    "rating": 4.88,
+    "reviews_count": 112,
+    "verified": true,
+    "police_verified": true,
+    "aadhaar_verified": true,
+    "badge": "Master Chef & Cleaner",
+    "services": [
+      "cooking_services",
+      "dishwashing",
+      "house_cleaning"
+    ],
+    "languages": [
+      "Hindi",
+      "English",
+      "Kannada"
+    ],
+    "hourly_rate": 240,
+    "monthly_rate": 4800,
+    "availability_status": "Available Today",
+    "available_now": true,
+    "slots": [
+      "08:00 AM - 11:00 AM",
+      "01:00 PM - 04:00 PM",
+      "06:00 PM - 09:00 PM"
+    ],
+    "bio": "Specialized in healthy low-oil meal preparation (rotis, sabzis, dal, biryani) and fast, hygienic dishwashing. Background checked with clean track record.",
+    "reviews": [
+      {
+        "user": "Vikram Malhotra",
+        "rating": 5,
+        "comment": "Sunita's rotis are so soft and her kitchen management is top notch.",
+        "date": "1 week ago"
+      }
+    ]
+  },
+  {
+    "id": "w_103",
+    "name": "Rajeshwari M.",
+    "age": 38,
+    "gender": "Female",
+    "city": "Hyderabad",
+    "locality": "Gachibowli / Financial District",
+    "avatar": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=300&q=80",
+    "experience_years": 9,
+    "rating": 4.98,
+    "reviews_count": 94,
+    "verified": true,
+    "police_verified": true,
+    "aadhaar_verified": true,
+    "badge": "Certified Childcare Specialist",
+    "services": [
+      "babysitting",
+      "cooking_services"
+    ],
+    "languages": [
+      "Telugu",
+      "Hindi",
+      "English"
+    ],
+    "hourly_rate": 300,
+    "monthly_rate": 7200,
+    "availability_status": "Available Today",
+    "available_now": true,
+    "slots": [
+      "09:00 AM - 01:00 PM",
+      "02:00 PM - 06:00 PM"
+    ],
+    "bio": "Certified infant & toddler care specialist. Experienced with active play, hygiene, feeding, and storytelling. Loved by toddlers and relied on by working parents.",
+    "reviews": [
+      {
+        "user": "Divya Prasad",
+        "rating": 5,
+        "comment": "She took care of our 2-year old twins so warmly. Complete peace of mind during work hours.",
+        "date": "4 days ago"
+      }
+    ]
+  },
+  {
+    "id": "w_104",
+    "name": "Radha Bai",
+    "age": 42,
+    "gender": "Female",
+    "city": "Mumbai",
+    "locality": "Andheri West / Juhu",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80",
+    "experience_years": 8,
+    "rating": 4.92,
+    "reviews_count": 165,
+    "verified": true,
+    "police_verified": true,
+    "aadhaar_verified": true,
+    "badge": "Deep Cleaning Pro",
+    "services": [
+      "house_cleaning",
+      "dishwashing",
+      "laundry_services"
+    ],
+    "languages": [
+      "Hindi",
+      "Marathi"
+    ],
+    "hourly_rate": 210,
+    "monthly_rate": 3900,
+    "availability_status": "Available Today",
+    "available_now": true,
+    "slots": [
+      "07:30 AM - 10:30 AM",
+      "11:30 AM - 02:30 PM",
+      "04:30 PM - 07:30 PM"
+    ],
+    "bio": "Diligent housekeeper with 8 years in western Mumbai societies. Specializes in dust-free floor mopping, utensil sparkle, and garment steam ironing.",
+    "reviews": [
+      {
+        "user": "Rohan Shah",
+        "rating": 5,
+        "comment": "Fast and thorough. Our clothes and kitchen look pristine every single day.",
+        "date": "5 days ago"
+      }
+    ]
+  },
+  {
+    "id": "w_105",
+    "name": "Anjali Verma",
+    "age": 36,
+    "gender": "Female",
+    "city": "Delhi NCR",
+    "locality": "Noida / Sector 62 & Indirapuram",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+    "experience_years": 9,
+    "rating": 4.91,
+    "reviews_count": 82,
+    "verified": true,
+    "police_verified": true,
+    "aadhaar_verified": true,
+    "badge": "Elderly Care Companion",
+    "services": [
+      "elderly_assistance",
+      "cooking_services"
+    ],
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "hourly_rate": 280,
+    "monthly_rate": 6900,
+    "availability_status": "Available Today",
+    "available_now": true,
+    "slots": [
+      "08:00 AM - 12:00 PM",
+      "02:00 PM - 06:00 PM"
+    ],
+    "bio": "Compassionate senior attendant with training in elderly mobility, hydration schedules, medication management, and warm conversation for seniors.",
+    "reviews": [
+      {
+        "user": "Kapil Mehra",
+        "rating": 5,
+        "comment": "Anjali looks after my elderly mother with so much patience and affection. Highly recommended.",
+        "date": "2 weeks ago"
+      }
+    ]
+  },
+  {
+    "id": "w_106",
+    "name": "Kavitha Reddy",
+    "age": 31,
+    "gender": "Female",
+    "city": "Hyderabad",
+    "locality": "Kondapur / Miyapur",
+    "avatar": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80",
+    "experience_years": 6,
+    "rating": 4.94,
+    "reviews_count": 134,
+    "verified": true,
+    "police_verified": true,
+    "aadhaar_verified": true,
+    "badge": "All-in-One Domestic Pro",
+    "services": [
+      "house_cleaning",
+      "dishwashing",
+      "laundry_services",
+      "cooking_services"
+    ],
+    "languages": [
+      "Telugu",
+      "Hindi"
+    ],
+    "hourly_rate": 250,
+    "monthly_rate": 5200,
+    "availability_status": "Available Today",
+    "available_now": true,
+    "slots": [
+      "07:00 AM - 10:00 AM",
+      "01:00 PM - 04:00 PM",
+      "05:00 PM - 08:00 PM"
+    ],
+    "bio": "Multi-talented helper who manages sweeping, mopping, utensil cleaning, and tasty home cooked dinners. Punctual, polite, and verified.",
+    "reviews": [
+      {
+        "user": "Karthik V.",
+        "rating": 5,
+        "comment": "Kavitha is super efficient and takes care of all our daily chores in 2 hours flat.",
+        "date": "3 days ago"
+      }
+    ]
+  },
+  {
+    "id": "w_107",
+    "name": "Meena Patil",
+    "age": 28,
+    "gender": "Female",
+    "city": "Bengaluru",
+    "locality": "Indiranagar / Domlur",
+    "avatar": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80",
+    "experience_years": 4,
+    "rating": 4.82,
+    "reviews_count": 67,
+    "verified": true,
+    "police_verified": true,
+    "aadhaar_verified": true,
+    "badge": "Laundry & Fabric Care",
+    "services": [
+      "laundry_services",
+      "house_cleaning",
+      "dishwashing"
+    ],
+    "languages": [
+      "Kannada",
+      "Hindi",
+      "English"
+    ],
+    "hourly_rate": 190,
+    "monthly_rate": 3600,
+    "availability_status": "Available Today",
+    "available_now": true,
+    "slots": [
+      "09:00 AM - 12:00 PM",
+      "03:00 PM - 06:00 PM"
+    ],
+    "bio": "Expert in laundry sorting, gentle machine wash, crisp steam pressing, and general dusting. Friendly and cooperative.",
+    "reviews": [
+      {
+        "user": "Pooja Hegde",
+        "rating": 5,
+        "comment": "Clothes are folded like a retail showroom. Very happy with Meena's service.",
+        "date": "1 week ago"
+      }
+    ]
+  },
+  {
+    "id": "w_108",
+    "name": "Priya Sundaram",
+    "age": 35,
+    "gender": "Female",
+    "city": "Bengaluru",
+    "locality": "Whitefield / Bellandur",
+    "avatar": "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=300&q=80",
+    "experience_years": 7,
+    "rating": 4.96,
+    "reviews_count": 120,
+    "verified": true,
+    "police_verified": true,
+    "aadhaar_verified": true,
+    "badge": "Nanny & Meal Specialist",
+    "services": [
+      "babysitting",
+      "cooking_services",
+      "elderly_assistance"
+    ],
+    "languages": [
+      "Tamil",
+      "English",
+      "Hindi",
+      "Kannada"
+    ],
+    "hourly_rate": 290,
+    "monthly_rate": 6800,
+    "availability_status": "Available Today",
+    "available_now": true,
+    "slots": [
+      "08:30 AM - 12:30 PM",
+      "02:30 PM - 06:30 PM"
+    ],
+    "bio": "Certified first-aid and childcare provider. Also prepares wholesome South Indian and continental snacks for kids. Trusted by IT couples across Whitefield.",
+    "reviews": [
+      {
+        "user": "Swathi Nathan",
+        "rating": 5,
+        "comment": "Priya is so gentle and patient with our daughter. Her food is also amazing.",
+        "date": "Yesterday"
+      }
+    ]
+  }
+]

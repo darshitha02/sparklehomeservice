@@ -1,0 +1,116 @@
+[
+  {
+    "id": "house_cleaning",
+    "name": "House Cleaning",
+    "badge": "Popular",
+    "icon": "sparkles",
+    "tagline": "Daily cleaning, sweeping, mopping and dusting",
+    "hourly_rate": 199,
+    "monthly_rate": 3500,
+    "duration": "1.5 - 3 Hours",
+    "description": "Thorough daily cleaning covering living room, bedrooms, kitchen floors, and balconies. Sweeping, mopping with disinfectant, and dusting.",
+    "tasks": [
+      "Brooming & dust removal in all rooms",
+      "Floor mopping with herbal antibacterial solutions",
+      "Furniture, TV unit & tabletop dusting",
+      "Kitchen & bathroom surface wiping",
+      "Trash clearing & bin bag replacement"
+    ],
+    "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    "id": "cooking_services",
+    "name": "Cooking Services",
+    "badge": "High Demand",
+    "icon": "utensils",
+    "tagline": "Daily cooking, meal preparation and kitchen assistance",
+    "hourly_rate": 249,
+    "monthly_rate": 4500,
+    "duration": "1.5 - 2.5 Hours",
+    "description": "Authentic, hygienic home-cooked meals prepared in your kitchen according to your dietary preferences (North Indian, South Indian, Sattvic, or healthy diet).",
+    "tasks": [
+      "Vegetable chopping, peeling & gravy base prep",
+      "Cooking breakfast, lunch or dinner dishes",
+      "Roti / chapati making & rice cooking",
+      "Gas stove & kitchen counter wipe-down",
+      "Custom spice & low-oil meal customization"
+    ],
+    "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    "id": "dishwashing",
+    "name": "Dishwashing",
+    "badge": "Daily Essential",
+    "icon": "disc",
+    "tagline": "Cleaning utensils and maintaining kitchen hygiene",
+    "hourly_rate": 149,
+    "monthly_rate": 2200,
+    "duration": "45 - 60 Minutes",
+    "description": "Thorough scrubbing and sanitization of cooking vessels, plates, glassware, and cutlery. Sink cleaning and dry dish organization.",
+    "tasks": [
+      "Scrubbing burnt oil & grease from pots and pans",
+      "Soap washing and thorough water rinsing",
+      "Sink scrub, drain descaling & sanitization",
+      "Drying utensils & organized rack placement",
+      "Kitchen platform hygiene maintenance"
+    ],
+    "image": "https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    "id": "laundry_services",
+    "name": "Laundry Services",
+    "badge": "Care & Fresh",
+    "icon": "shirt",
+    "tagline": "Washing, ironing and folding clothes",
+    "hourly_rate": 179,
+    "monthly_rate": 2800,
+    "duration": "1 - 2 Hours",
+    "description": "Complete laundry care including washing machine management or delicate hand-washing, clothes drying line hanging, neat folding, and steam ironing.",
+    "tasks": [
+      "Sorting whites & colored garments",
+      "Machine wash / hand wash delicate fabrics",
+      "Drying clothes on balcony/indoor stands",
+      "Crisp steam ironing for formal & casual attire",
+      "Neat wardrobe folding and stacking"
+    ],
+    "image": "https://images.unsplash.com/photo-1545173168-9f1907e80789?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    "id": "babysitting",
+    "name": "Babysitting & Childcare",
+    "badge": "Verified Nannies",
+    "icon": "baby",
+    "tagline": "Childcare and supervision services",
+    "hourly_rate": 299,
+    "monthly_rate": 6500,
+    "duration": "2 - 6 Hours",
+    "description": "Attentive, loving and safe supervision of infants, toddlers, and school-age kids. Feeding, playing, nap routine, and constant vigilant supervision.",
+    "tasks": [
+      "Feeding, warming milk & baby meal assistance",
+      "Diaper changing, hygiene & clothing care",
+      "Engaging educational play, storytelling & drawing",
+      "Strict infant safety & childproofed monitoring",
+      "Post-school routine & nap supervision"
+    ],
+    "image": "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    "id": "elderly_assistance",
+    "name": "Elderly Assistance",
+    "badge": "Compassionate",
+    "icon": "heart-handshake",
+    "tagline": "Non-medical daily assistance for elderly people",
+    "hourly_rate": 279,
+    "monthly_rate": 7000,
+    "duration": "2 - 5 Hours",
+    "description": "Caring, non-medical companionship for senior citizens. Walking mobility support, medicine schedule reminders, conversation, and warm home assistance.",
+    "tasks": [
+      "Walking & gentle mobility assistance around home",
+      "Timely medication schedule reminders",
+      "Serving warm meals & hydration support",
+      "Companionship, reading, and attentive conversation",
+      "Assisting with light dressing & comfort"
+    ],
+    "image": "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=700&q=80"
+  }
+]
