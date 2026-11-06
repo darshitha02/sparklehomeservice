@@ -1,0 +1,47 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/helpers"
+  to = "/helpers.html"
+  status = 200
+
+[[redirects]]
+  from = "/book"
+  to = "/book.html"
+  status = 200
+
+[[redirects]]
+  from = "/bookings"
+  to = "/bookings.html"
+  status = 200
+
+[[redirects]]
+  from = "/worker/portal"
+  to = "/worker.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
+[[redirects]]
+  from = "/emergency"
+  to = "/emergency.html"
+  status = 200
+
+[[redirects]]
+  from = "/presentation"
+  to = "/presentation.html"
+  status = 200
+
+[[redirects]]
+  from = "/download-ppt"
+  to = "/Sparkle_Home_Project_Presentation.pptx"
+  status = 200

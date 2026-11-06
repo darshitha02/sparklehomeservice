@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Verified Domestic Helpers — Sparkle Home</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706'
+            },
+            emerald: {
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857'
+            }
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+    .badge-verified {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+    .badge-emergency {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white pb-16 md:pb-0">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-gradient-to-r from-brand-900 via-brand-800 to-indigo-900 text-white text-xs py-2 px-4 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-slate-900 uppercase tracking-wide">
+          ✦ Trust First
+        </span>
+        <span class="hidden sm:inline text-slate-200">
+          All helpers 100% Aadhaar & Police Verified. Instant booking in Hyderabad, Bengaluru, Mumbai & Delhi NCR.
+        </span>
+        <span class="sm:hidden text-slate-200">
+          Verified domestic maids, cooks & nannies in 60 mins.
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-slate-300">
+        <a href="/emergency" class="flex items-center gap-1 text-red-300 hover:text-white font-semibold">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>Emergency 1-Hr Help</span>
+        </a>
+        <span class="text-slate-500">|</span>
+        <a href="/presentation" class="hover:text-white font-medium flex items-center gap-1">
+          <i data-lucide="presentation" class="w-3.5 h-3.5 text-blue-300"></i>
+          <span>Project PPT Deck</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- BRAND LOGO -->
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-heading font-extrabold text-2xl tracking-tight text-slate-900">
+                Sparkle<span class="text-brand-600">Home</span>
+              </span>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-brand-50 text-brand-700 border border-brand-200">
+                Smart Maid
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-500 -mt-1 hidden sm:block font-medium">
+              Your Home, Our Care • Trusted Helpers
+            </p>
+          </div>
+        </a>
+
+        <!-- DESKTOP NAVIGATION LINKS -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+          <a href="/services" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="layers" class="w-4 h-4 text-slate-400"></i>
+            <span>Services (6)</span>
+          </a>
+          <a href="/helpers" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+            <span>Browse Helpers</span>
+          </a>
+          <a href="/book" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="calendar-check" class="w-4 h-4 text-slate-400"></i>
+            <span>Book Now</span>
+          </a>
+          <a href="/bookings" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="receipt" class="w-4 h-4 text-slate-400"></i>
+            <span>My Bookings</span>
+          </a>
+          <a href="/worker/portal" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="briefcase" class="w-4 h-4 text-slate-400"></i>
+            <span>Worker Portal</span>
+          </a>
+          <a href="/admin" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="shield" class="w-4 h-4 text-slate-400"></i>
+            <span>Admin</span>
+          </a>
+        </nav>
+
+        <!-- HEADER ACTIONS -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="/emergency" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-red-700 bg-red-50 border border-red-200 hover:bg-red-100 transition-colors">
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+            <span>Emergency SOS</span>
+          </a>
+          <a href="/book" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/25 transition-all hover:shadow-lg hover:-translate-y-0.5">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Book a Helper</span>
+          </a>
+        </div>
+
+        <!-- MOBILE HAMBURGER BUTTON -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- MOBILE MENU DRAWER OVERLAY -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 shadow-xl space-y-3">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="/services" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="layers" class="w-4 h-4 text-brand-600"></i>
+          <span>Our Services</span>
+        </a>
+        <a href="/helpers" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="users" class="w-4 h-4 text-brand-600"></i>
+          <span>Browse Maids</span>
+        </a>
+        <a href="/book" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="calendar-check" class="w-4 h-4 text-brand-600"></i>
+          <span>Book Schedule</span>
+        </a>
+        <a href="/bookings" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="receipt" class="w-4 h-4 text-brand-600"></i>
+          <span>My Bookings</span>
+        </a>
+        <a href="/worker/portal" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="briefcase" class="w-4 h-4 text-brand-600"></i>
+          <span>Worker Portal</span>
+        </a>
+        <a href="/admin" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="shield" class="w-4 h-4 text-brand-600"></i>
+          <span>Admin Center</span>
+        </a>
+      </div>
+      <div class="pt-2 flex flex-col gap-2">
+        <a href="/emergency" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-bold text-red-700 bg-red-50 border border-red-200">
+          <i data-lucide="zap" class="w-4 h-4 text-red-600"></i>
+          <span>Need Emergency Help (Arrives in 60 mins)</span>
+        </a>
+        <a href="/presentation" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200">
+          <i data-lucide="presentation" class="w-4 h-4 text-brand-600"></i>
+          <span>View Project Presentation Slides</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE CONTENT -->
+  <main class="flex-grow">
+    
+<div class="bg-slate-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl space-y-2">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+        <span>100% Police & Identity Verified Helpers</span>
+      </span>
+      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+        Find Domestic Helpers & Maids Near You
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm">
+        Compare profiles, hourly rates, languages spoken, and genuine client ratings.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- LEFT FILTER SIDEBAR -->
+    <div class="lg:col-span-3">
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-6 sticky top-28">
+        
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <h3 class="font-heading font-bold text-slate-900 text-base flex items-center gap-2">
+            <i data-lucide="sliders" class="w-4 h-4 text-brand-600"></i>
+            <span>Filter Helpers</span>
+          </h3>
+          <button id="reset-filters" class="text-xs text-brand-600 hover:underline font-semibold">
+            Reset
+          </button>
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-xs font-bold text-slate-700">Metro City</label>
+          <select id="filter-city" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <option value="">All Cities</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi NCR">Delhi NCR</option>
+          </select>
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-xs font-bold text-slate-700">Service Required</label>
+          <select id="filter-service" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <option value="">All Services</option>
+            <option value="house_cleaning">House Cleaning</option><option value="cooking_services">Cooking Services</option><option value="dishwashing">Dishwashing</option><option value="laundry_services">Laundry Services</option><option value="babysitting">Babysitting & Childcare</option><option value="elderly_assistance">Elderly Assistance</option>
+          </select>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-700">
+            <span>Max Hourly Rate</span>
+            <span id="rate-display" class="text-brand-600 font-extrabold">₹350/hr</span>
+          </div>
+          <input type="range" id="filter-rate" min="150" max="350" step="10" value="350" class="w-full accent-brand-600 cursor-pointer">
+          <div class="flex justify-between text-[10px] text-slate-400">
+            <span>₹150</span>
+            <span>₹250</span>
+            <span>₹350</span>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 space-y-2.5">
+          <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-700 font-medium">
+            <input type="checkbox" id="filter-verified" checked class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+            <span>Police & Aadhaar Verified Only</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-700 font-medium">
+            <input type="checkbox" id="filter-available" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500">
+            <span>Available Today Only</span>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT WORKERS GRID -->
+    <div class="lg:col-span-9 space-y-6">
+      
+      <div class="flex items-center justify-between bg-white px-5 py-3 rounded-2xl border border-slate-200">
+        <div class="text-xs font-semibold text-slate-600">
+          Showing <span id="worker-count" class="font-bold text-slate-900">8</span> verified helpers
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-slate-400">Sort by:</span>
+          <select id="sort-select" class="text-xs font-bold text-slate-700 border-none bg-transparent focus:outline-none cursor-pointer">
+            <option value="rating">Highest Rated</option>
+            <option value="price_low">Lowest Price</option>
+            <option value="experience">Experience</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="workers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="w_101"
+             data-city="Hyderabad"
+             data-services="house_cleaning,cooking_services,dishwashing"
+             data-rate="220"
+             data-rating="4.95"
+             data-experience="7"
+             data-verified="true"
+             data-available="true">
+          
+          <div>
+            <div class="relative mb-4">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Lakshmi Devi" class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  Hyderabad
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">Lakshmi Devi</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>4.95</span>
+                  <span class="text-slate-400 font-normal">(148)</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                Hitec City / Madhapur
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                house cleaning
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                cooking services
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                dishwashing
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              Expert home cook and meticulous cleaner with 7 years of trusted service in apartments across Hitec City. Known for punctual arrival and authentic Telugu & North Indian dishes.
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">7 yrs experience</span>
+              <span>Telugu, Hindi, English (Basic)</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹220<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('w_101')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id=w_101" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="w_102"
+             data-city="Bengaluru"
+             data-services="cooking_services,dishwashing,house_cleaning"
+             data-rate="240"
+             data-rating="4.88"
+             data-experience="5"
+             data-verified="true"
+             data-available="true">
+          
+          <div>
+            <div class="relative mb-4">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Sunita Sharma" class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  Bengaluru
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">Sunita Sharma</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>4.88</span>
+                  <span class="text-slate-400 font-normal">(112)</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                Koramangala / HSR Layout
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                cooking services
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                dishwashing
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                house cleaning
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              Specialized in healthy low-oil meal preparation (rotis, sabzis, dal, biryani) and fast, hygienic dishwashing. Background checked with clean track record.
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">5 yrs experience</span>
+              <span>Hindi, English, Kannada</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹240<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('w_102')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id=w_102" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="w_103"
+             data-city="Hyderabad"
+             data-services="babysitting,cooking_services"
+             data-rate="300"
+             data-rating="4.98"
+             data-experience="9"
+             data-verified="true"
+             data-available="true">
+          
+          <div>
+            <div class="relative mb-4">
+              <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=300&q=80" alt="Rajeshwari M." class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  Hyderabad
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">Rajeshwari M.</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>4.98</span>
+                  <span class="text-slate-400 font-normal">(94)</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                Gachibowli / Financial District
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                babysitting
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                cooking services
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              Certified infant & toddler care specialist. Experienced with active play, hygiene, feeding, and storytelling. Loved by toddlers and relied on by working parents.
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">9 yrs experience</span>
+              <span>Telugu, Hindi, English</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹300<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('w_103')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id=w_103" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="w_104"
+             data-city="Mumbai"
+             data-services="house_cleaning,dishwashing,laundry_services"
+             data-rate="210"
+             data-rating="4.92"
+             data-experience="8"
+             data-verified="true"
+             data-available="true">
+          
+          <div>
+            <div class="relative mb-4">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80" alt="Radha Bai" class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  Mumbai
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">Radha Bai</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>4.92</span>
+                  <span class="text-slate-400 font-normal">(165)</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                Andheri West / Juhu
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                house cleaning
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                dishwashing
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                laundry services
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              Diligent housekeeper with 8 years in western Mumbai societies. Specializes in dust-free floor mopping, utensil sparkle, and garment steam ironing.
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">8 yrs experience</span>
+              <span>Hindi, Marathi</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹210<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('w_104')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id=w_104" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="w_105"
+             data-city="Delhi NCR"
+             data-services="elderly_assistance,cooking_services"
+             data-rate="280"
+             data-rating="4.91"
+             data-experience="9"
+             data-verified="true"
+             data-available="true">
+          
+          <div>
+            <div class="relative mb-4">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Anjali Verma" class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  Delhi NCR
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">Anjali Verma</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>4.91</span>
+                  <span class="text-slate-400 font-normal">(82)</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                Noida / Sector 62 & Indirapuram
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                elderly assistance
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                cooking services
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              Compassionate senior attendant with training in elderly mobility, hydration schedules, medication management, and warm conversation for seniors.
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">9 yrs experience</span>
+              <span>Hindi, English</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹280<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('w_105')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id=w_105" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="w_106"
+             data-city="Hyderabad"
+             data-services="house_cleaning,dishwashing,laundry_services,cooking_services"
+             data-rate="250"
+             data-rating="4.94"
+             data-experience="6"
+             data-verified="true"
+             data-available="true">
+          
+          <div>
+            <div class="relative mb-4">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80" alt="Kavitha Reddy" class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  Hyderabad
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">Kavitha Reddy</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>4.94</span>
+                  <span class="text-slate-400 font-normal">(134)</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                Kondapur / Miyapur
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                house cleaning
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                dishwashing
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                laundry services
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                cooking services
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              Multi-talented helper who manages sweeping, mopping, utensil cleaning, and tasty home cooked dinners. Punctual, polite, and verified.
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">6 yrs experience</span>
+              <span>Telugu, Hindi</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹250<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('w_106')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id=w_106" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="w_107"
+             data-city="Bengaluru"
+             data-services="laundry_services,house_cleaning,dishwashing"
+             data-rate="190"
+             data-rating="4.82"
+             data-experience="4"
+             data-verified="true"
+             data-available="true">
+          
+          <div>
+            <div class="relative mb-4">
+              <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80" alt="Meena Patil" class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  Bengaluru
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">Meena Patil</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>4.82</span>
+                  <span class="text-slate-400 font-normal">(67)</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                Indiranagar / Domlur
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                laundry services
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                house cleaning
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                dishwashing
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              Expert in laundry sorting, gentle machine wash, crisp steam pressing, and general dusting. Friendly and cooperative.
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">4 yrs experience</span>
+              <span>Kannada, Hindi, English</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹190<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('w_107')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id=w_107" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="worker-card bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 flex flex-col justify-between"
+             data-id="w_108"
+             data-city="Bengaluru"
+             data-services="babysitting,cooking_services,elderly_assistance"
+             data-rate="290"
+             data-rating="4.96"
+             data-experience="7"
+             data-verified="true"
+             data-available="true">
+          
+          <div>
+            <div class="relative mb-4">
+              <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=300&q=80" alt="Priya Sundaram" class="w-full h-48 rounded-2xl object-cover shadow-sm">
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white flex items-center gap-1">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
+                  Bengaluru
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500 text-white shadow-sm flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> Verified
+                </span>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-lg text-slate-900">Priya Sundaram</h3>
+                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                  <span>4.96</span>
+                  <span class="text-slate-400 font-normal">(120)</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="compass" class="w-3 h-3 text-slate-400"></i>
+                Whitefield / Bellandur
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                babysitting
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                cooking services
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-brand-50 text-brand-700 border border-brand-100 capitalize">
+                elderly assistance
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+              Certified first-aid and childcare provider. Also prepares wholesome South Indian and continental snacks for kids. Trusted by IT couples across Whitefield.
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="font-semibold text-slate-700">7 yrs experience</span>
+              <span>Tamil, English, Hindi, Kannada</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] text-slate-400">Rate</div>
+              <div class="text-base font-extrabold text-slate-900">₹290<span class="text-xs font-normal text-slate-500">/hr</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openWorkerModal('w_108')" class="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+                Profile
+              </button>
+              <a href="/book?worker_id=w_108" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-colors">
+                Book
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- WORKER PROFILE MODAL -->
+<div id="worker-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-6">
+    <button onclick="closeWorkerModal()" class="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+      <img id="m-avatar" src="" alt="Worker" class="w-20 h-20 rounded-2xl object-cover border-2 border-brand-500 shadow-md">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <h2 id="m-name" class="font-heading font-extrabold text-2xl text-slate-900">Name</h2>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-white">
+            ✓ Aadhaar & Police Verified
+          </span>
+        </div>
+        <p id="m-loc" class="text-xs text-slate-500">Locality, City</p>
+        <div class="flex items-center gap-3 text-xs font-bold text-slate-700 pt-1">
+          <span class="text-amber-500 flex items-center gap-1">
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <span id="m-rating">4.9</span>
+          </span>
+          <span class="text-slate-300">•</span>
+          <span id="m-exp">7 yrs Experience</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-3">
+      <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">About Helper</h4>
+      <p id="m-bio" class="text-xs text-slate-600 leading-relaxed"></p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
+        <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-2">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+          <span>Police Record: Clean</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-800 text-xs font-semibold flex items-center gap-2">
+          <i data-lucide="file-check" class="w-4 h-4 text-blue-600"></i>
+          <span>Aadhaar: Verified</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold flex items-center gap-2">
+          <i data-lucide="clock" class="w-4 h-4 text-amber-600"></i>
+          <span>Zero Double-Booking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <div class="text-xs text-slate-400">Transparent Pricing</div>
+        <div class="text-lg font-extrabold text-slate-900">
+          <span id="m-hourly">₹220</span><span class="text-xs font-normal text-slate-500">/hr</span>
+          <span class="text-slate-300 mx-2">|</span>
+          <span id="m-monthly" class="text-brand-600">₹4,200</span><span class="text-xs font-normal text-slate-500">/mo</span>
+        </div>
+      </div>
+      <a id="m-book-btn" href="#" class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs uppercase tracking-wider text-center shadow-md transition-colors">
+        Proceed to Book This Helper →
+      </a>
+    </div>
+  </div>
+</div>
+
+  </main>
+
+  <!-- MOBILE STICKY BOTTOM NAVIGATION BAR -->
+  <div class="fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 z-40 lg:hidden shadow-lg py-2 px-3">
+    <div class="grid grid-cols-5 text-center text-[10px] font-semibold text-slate-600">
+      <a href="/" class="flex flex-col items-center gap-1 text-brand-600">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>Home</span>
+      </a>
+      <a href="/helpers" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="search" class="w-5 h-5"></i>
+        <span>Helpers</span>
+      </a>
+      <a href="/book" class="flex flex-col items-center gap-1 text-white bg-brand-600 rounded-xl py-1 px-1 -mt-3 shadow-md shadow-brand-600/30">
+        <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+        <span>Book</span>
+      </a>
+      <a href="/bookings" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="clock" class="w-5 h-5"></i>
+        <span>Bookings</span>
+      </a>
+      <a href="/worker/portal" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="user-check" class="w-5 h-5"></i>
+        <span>Worker</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </div>
+            <span class="font-heading font-extrabold text-2xl text-white">
+              Sparkle<span class="text-brand-400">Home</span>
+            </span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+            India's premier smart maid and domestic help booking platform. Connecting urban households with verified domestic workers: house cleaners, cooks, babysitters, laundry pros, and elderly companions.
+          </p>
+          <div class="flex items-center gap-3 pt-2 text-xs text-slate-400">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> Police Verified
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i> Hyperlocal Search
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="credit-card" class="w-3.5 h-3.5 text-blue-400"></i> Razorpay & Cash
+            </span>
+          </div>
+        </div>
+
+        <!-- 6 Core Services -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Domestic Services
+          </h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="/helpers?service=house_cleaning" class="hover:text-white transition-colors">House Cleaning</a></li>
+            <li><a href="/helpers?service=cooking_services" class="hover:text-white transition-colors">Cooking Services</a></li>
+            <li><a href="/helpers?service=dishwashing" class="hover:text-white transition-colors">Dishwashing & Hygiene</a></li>
+            <li><a href="/helpers?service=laundry_services" class="hover:text-white transition-colors">Laundry & Steam Ironing</a></li>
+            <li><a href="/helpers?service=babysitting" class="hover:text-white transition-colors">Babysitting & Childcare</a></li>
+            <li><a href="/helpers?service=elderly_assistance" class="hover:text-white transition-colors">Elderly Assistance</a></li>
+          </ul>
+        </div>
+
+        <!-- Platform Links -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Platform Roles
+          </h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="/book" class="hover:text-white transition-colors">Customer Booking Flow</a></li>
+            <li><a href="/bookings" class="hover:text-white transition-colors">Manage Bookings</a></li>
+            <li><a href="/worker/portal" class="hover:text-white transition-colors">Maid / Worker Portal</a></li>
+            <li><a href="/worker/portal" class="hover:text-white transition-colors">Register as Helper</a></li>
+            <li><a href="/admin" class="hover:text-white transition-colors">Admin Verification Desk</a></li>
+            <li><a href="/emergency" class="hover:text-white transition-colors">Emergency Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Locations & Academic -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Project & Locations
+          </h4>
+          <p class="text-xs text-slate-400">
+            Active Hubs: Hyderabad, Bengaluru, Mumbai, Delhi NCR, Pune.
+          </p>
+          <div class="pt-2">
+            <a href="/presentation" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-600 text-white text-xs font-bold hover:bg-brand-500 transition-colors w-full justify-center">
+              <i data-lucide="presentation" class="w-4 h-4"></i>
+              <span>View PPT Presentation</span>
+            </a>
+          </div>
+          <div class="pt-1">
+            <a href="/download-ppt" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold hover:bg-slate-700 transition-colors w-full justify-center">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download .PPTX File</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div>
+          © 2026 Sparkle Home Platform. Built for Indian Households & Domestic Worker Empowerment.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/presentation" class="hover:text-slate-300">Viva Guide</a>
+          <a href="/admin" class="hover:text-slate-300">Admin Login</a>
+          <a href="/worker/portal" class="hover:text-slate-300">Helper KYC</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GLOBAL NOTIFICATION TOAST -->
+  <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 max-w-sm w-full bg-slate-900 text-white p-4 rounded-2xl shadow-2xl border border-slate-700 flex items-start gap-3 pointer-events-none">
+    <div id="toast-icon" class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <div class="flex-grow">
+      <div id="toast-title" class="font-bold text-sm">Success</div>
+      <div id="toast-message" class="text-xs text-slate-300 mt-0.5">Your action has been completed.</div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    function showToast(title, message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastTitle = document.getElementById('toast-title');
+      const toastMessage = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
+
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+
+      if (type === 'success') {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
+      } else if (type === 'error') {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="alert-circle" class="w-4 h-4"></i>';
+      } else {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="info" class="w-4 h-4"></i>';
+      }
+      lucide.createIcons();
+
+      toast.classList.remove('translate-y-[-150%]', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-[-150%]', 'pointer-events-none');
+      }, 3500);
+    }
+  </script>
+  
+<script>
+  const workersData = [{"id":"w_101","name":"Lakshmi Devi","age":34,"gender":"Female","city":"Hyderabad","locality":"Hitec City / Madhapur","avatar":"https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80","experience_years":7,"rating":4.95,"reviews_count":148,"verified":true,"police_verified":true,"aadhaar_verified":true,"badge":"Top Rated Helper","services":["house_cleaning","cooking_services","dishwashing"],"languages":["Telugu","Hindi","English (Basic)"],"hourly_rate":220,"monthly_rate":4200,"availability_status":"Available Today","available_now":true,"slots":["07:00 AM - 10:00 AM","12:00 PM - 03:00 PM","05:00 PM - 08:00 PM"],"bio":"Expert home cook and meticulous cleaner with 7 years of trusted service in apartments across Hitec City. Known for punctual arrival and authentic Telugu & North Indian dishes.","reviews":[{"user":"Sneha Reddy","rating":5,"comment":"Lakshmi garu is an absolute blessing! Her cooking is delicious and she leaves the house spotless.","date":"Yesterday"},{"user":"Arun Kumar","rating":5,"comment":"Extremely punctual and trustworthy. We have booked her monthly package for 4 months now.","date":"3 days ago"}]},{"id":"w_102","name":"Sunita Sharma","age":29,"gender":"Female","city":"Bengaluru","locality":"Koramangala / HSR Layout","avatar":"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80","experience_years":5,"rating":4.88,"reviews_count":112,"verified":true,"police_verified":true,"aadhaar_verified":true,"badge":"Master Chef & Cleaner","services":["cooking_services","dishwashing","house_cleaning"],"languages":["Hindi","English","Kannada"],"hourly_rate":240,"monthly_rate":4800,"availability_status":"Available Today","available_now":true,"slots":["08:00 AM - 11:00 AM","01:00 PM - 04:00 PM","06:00 PM - 09:00 PM"],"bio":"Specialized in healthy low-oil meal preparation (rotis, sabzis, dal, biryani) and fast, hygienic dishwashing. Background checked with clean track record.","reviews":[{"user":"Vikram Malhotra","rating":5,"comment":"Sunita's rotis are so soft and her kitchen management is top notch.","date":"1 week ago"}]},{"id":"w_103","name":"Rajeshwari M.","age":38,"gender":"Female","city":"Hyderabad","locality":"Gachibowli / Financial District","avatar":"https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=300&q=80","experience_years":9,"rating":4.98,"reviews_count":94,"verified":true,"police_verified":true,"aadhaar_verified":true,"badge":"Certified Childcare Specialist","services":["babysitting","cooking_services"],"languages":["Telugu","Hindi","English"],"hourly_rate":300,"monthly_rate":7200,"availability_status":"Available Today","available_now":true,"slots":["09:00 AM - 01:00 PM","02:00 PM - 06:00 PM"],"bio":"Certified infant & toddler care specialist. Experienced with active play, hygiene, feeding, and storytelling. Loved by toddlers and relied on by working parents.","reviews":[{"user":"Divya Prasad","rating":5,"comment":"She took care of our 2-year old twins so warmly. Complete peace of mind during work hours.","date":"4 days ago"}]},{"id":"w_104","name":"Radha Bai","age":42,"gender":"Female","city":"Mumbai","locality":"Andheri West / Juhu","avatar":"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80","experience_years":8,"rating":4.92,"reviews_count":165,"verified":true,"police_verified":true,"aadhaar_verified":true,"badge":"Deep Cleaning Pro","services":["house_cleaning","dishwashing","laundry_services"],"languages":["Hindi","Marathi"],"hourly_rate":210,"monthly_rate":3900,"availability_status":"Available Today","available_now":true,"slots":["07:30 AM - 10:30 AM","11:30 AM - 02:30 PM","04:30 PM - 07:30 PM"],"bio":"Diligent housekeeper with 8 years in western Mumbai societies. Specializes in dust-free floor mopping, utensil sparkle, and garment steam ironing.","reviews":[{"user":"Rohan Shah","rating":5,"comment":"Fast and thorough. Our clothes and kitchen look pristine every single day.","date":"5 days ago"}]},{"id":"w_105","name":"Anjali Verma","age":36,"gender":"Female","city":"Delhi NCR","locality":"Noida / Sector 62 & Indirapuram","avatar":"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80","experience_years":9,"rating":4.91,"reviews_count":82,"verified":true,"police_verified":true,"aadhaar_verified":true,"badge":"Elderly Care Companion","services":["elderly_assistance","cooking_services"],"languages":["Hindi","English"],"hourly_rate":280,"monthly_rate":6900,"availability_status":"Available Today","available_now":true,"slots":["08:00 AM - 12:00 PM","02:00 PM - 06:00 PM"],"bio":"Compassionate senior attendant with training in elderly mobility, hydration schedules, medication management, and warm conversation for seniors.","reviews":[{"user":"Kapil Mehra","rating":5,"comment":"Anjali looks after my elderly mother with so much patience and affection. Highly recommended.","date":"2 weeks ago"}]},{"id":"w_106","name":"Kavitha Reddy","age":31,"gender":"Female","city":"Hyderabad","locality":"Kondapur / Miyapur","avatar":"https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=300&q=80","experience_years":6,"rating":4.94,"reviews_count":134,"verified":true,"police_verified":true,"aadhaar_verified":true,"badge":"All-in-One Domestic Pro","services":["house_cleaning","dishwashing","laundry_services","cooking_services"],"languages":["Telugu","Hindi"],"hourly_rate":250,"monthly_rate":5200,"availability_status":"Available Today","available_now":true,"slots":["07:00 AM - 10:00 AM","01:00 PM - 04:00 PM","05:00 PM - 08:00 PM"],"bio":"Multi-talented helper who manages sweeping, mopping, utensil cleaning, and tasty home cooked dinners. Punctual, polite, and verified.","reviews":[{"user":"Karthik V.","rating":5,"comment":"Kavitha is super efficient and takes care of all our daily chores in 2 hours flat.","date":"3 days ago"}]},{"id":"w_107","name":"Meena Patil","age":28,"gender":"Female","city":"Bengaluru","locality":"Indiranagar / Domlur","avatar":"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80","experience_years":4,"rating":4.82,"reviews_count":67,"verified":true,"police_verified":true,"aadhaar_verified":true,"badge":"Laundry & Fabric Care","services":["laundry_services","house_cleaning","dishwashing"],"languages":["Kannada","Hindi","English"],"hourly_rate":190,"monthly_rate":3600,"availability_status":"Available Today","available_now":true,"slots":["09:00 AM - 12:00 PM","03:00 PM - 06:00 PM"],"bio":"Expert in laundry sorting, gentle machine wash, crisp steam pressing, and general dusting. Friendly and cooperative.","reviews":[{"user":"Pooja Hegde","rating":5,"comment":"Clothes are folded like a retail showroom. Very happy with Meena's service.","date":"1 week ago"}]},{"id":"w_108","name":"Priya Sundaram","age":35,"gender":"Female","city":"Bengaluru","locality":"Whitefield / Bellandur","avatar":"https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=300&q=80","experience_years":7,"rating":4.96,"reviews_count":120,"verified":true,"police_verified":true,"aadhaar_verified":true,"badge":"Nanny & Meal Specialist","services":["babysitting","cooking_services","elderly_assistance"],"languages":["Tamil","English","Hindi","Kannada"],"hourly_rate":290,"monthly_rate":6800,"availability_status":"Available Today","available_now":true,"slots":["08:30 AM - 12:30 PM","02:30 PM - 06:30 PM"],"bio":"Certified first-aid and childcare provider. Also prepares wholesome South Indian and continental snacks for kids. Trusted by IT couples across Whitefield.","reviews":[{"user":"Swathi Nathan","rating":5,"comment":"Priya is so gentle and patient with our daughter. Her food is also amazing.","date":"Yesterday"}]}];
+
+  function openWorkerModal(workerId) {
+    const worker = workersData.find(w => w.id === workerId);
+    if (!worker) return;
+
+    document.getElementById('m-avatar').src = worker.avatar;
+    document.getElementById('m-name').textContent = worker.name;
+    document.getElementById('m-loc').textContent = worker.locality + ', ' + worker.city;
+    document.getElementById('m-rating').textContent = worker.rating;
+    document.getElementById('m-exp').textContent = worker.experience_years + ' Years Experience';
+    document.getElementById('m-bio').textContent = worker.bio;
+    document.getElementById('m-hourly').textContent = '₹' + worker.hourly_rate;
+    document.getElementById('m-monthly').textContent = '₹' + worker.monthly_rate;
+    document.getElementById('m-book-btn').href = '/book?worker_id=' + worker.id;
+
+    document.getElementById('worker-modal').classList.remove('hidden');
+    lucide.createIcons();
+  }
+
+  function closeWorkerModal() {
+    document.getElementById('worker-modal').classList.add('hidden');
+  }
+
+  const filterCity = document.getElementById('filter-city');
+  const filterService = document.getElementById('filter-service');
+  const filterRate = document.getElementById('filter-rate');
+  const rateDisplay = document.getElementById('rate-display');
+  const filterVerified = document.getElementById('filter-verified');
+  const filterAvailable = document.getElementById('filter-available');
+  const workerCards = document.querySelectorAll('.worker-card');
+  const workerCount = document.getElementById('worker-count');
+
+  // Check URL query parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('city')) filterCity.value = urlParams.get('city');
+  if (urlParams.get('service')) filterService.value = urlParams.get('service');
+
+  function applyFilters() {
+    const city = filterCity.value.toLowerCase();
+    const service = filterService.value;
+    const maxRate = parseInt(filterRate.value);
+    const verifiedOnly = filterVerified.checked;
+    const availableOnly = filterAvailable.checked;
+
+    rateDisplay.textContent = '₹' + maxRate + '/hr';
+
+    let visibleCount = 0;
+
+    workerCards.forEach(card => {
+      const cCity = card.dataset.city.toLowerCase();
+      const cServices = card.dataset.services.split(',');
+      const cRate = parseInt(card.dataset.rate);
+      const cVerified = card.dataset.verified === 'true';
+      const cAvailable = card.dataset.available === 'true';
+
+      let match = true;
+      if (city && !cCity.includes(city)) match = false;
+      if (service && !cServices.includes(service)) match = false;
+      if (cRate > maxRate) match = false;
+      if (verifiedOnly && !cVerified) match = false;
+      if (availableOnly && !cAvailable) match = false;
+
+      if (match) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    workerCount.textContent = visibleCount;
+  }
+
+  filterCity.addEventListener('change', applyFilters);
+  filterService.addEventListener('change', applyFilters);
+  filterRate.addEventListener('input', applyFilters);
+  filterVerified.addEventListener('change', applyFilters);
+  filterAvailable.addEventListener('change', applyFilters);
+
+  document.getElementById('reset-filters').addEventListener('click', () => {
+    filterCity.value = '';
+    filterService.value = '';
+    filterRate.value = 350;
+    filterVerified.checked = false;
+    filterAvailable.checked = false;
+    applyFilters();
+  });
+
+  applyFilters();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sparkle Home — Smart Maid & Domestic Help Booking Platform</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706'
+            },
+            emerald: {
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857'
+            }
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+    .badge-verified {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+    .badge-emergency {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white pb-16 md:pb-0">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-gradient-to-r from-brand-900 via-brand-800 to-indigo-900 text-white text-xs py-2 px-4 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-slate-900 uppercase tracking-wide">
+          ✦ Trust First
+        </span>
+        <span class="hidden sm:inline text-slate-200">
+          All helpers 100% Aadhaar & Police Verified. Instant booking in Hyderabad, Bengaluru, Mumbai & Delhi NCR.
+        </span>
+        <span class="sm:hidden text-slate-200">
+          Verified domestic maids, cooks & nannies in 60 mins.
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-slate-300">
+        <a href="/emergency" class="flex items-center gap-1 text-red-300 hover:text-white font-semibold">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>Emergency 1-Hr Help</span>
+        </a>
+        <span class="text-slate-500">|</span>
+        <a href="/presentation" class="hover:text-white font-medium flex items-center gap-1">
+          <i data-lucide="presentation" class="w-3.5 h-3.5 text-blue-300"></i>
+          <span>Project PPT Deck</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- BRAND LOGO -->
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-heading font-extrabold text-2xl tracking-tight text-slate-900">
+                Sparkle<span class="text-brand-600">Home</span>
+              </span>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-brand-50 text-brand-700 border border-brand-200">
+                Smart Maid
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-500 -mt-1 hidden sm:block font-medium">
+              Your Home, Our Care • Trusted Helpers
+            </p>
+          </div>
+        </a>
+
+        <!-- DESKTOP NAVIGATION LINKS -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+          <a href="/services" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="layers" class="w-4 h-4 text-slate-400"></i>
+            <span>Services (6)</span>
+          </a>
+          <a href="/helpers" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+            <span>Browse Helpers</span>
+          </a>
+          <a href="/book" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="calendar-check" class="w-4 h-4 text-slate-400"></i>
+            <span>Book Now</span>
+          </a>
+          <a href="/bookings" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="receipt" class="w-4 h-4 text-slate-400"></i>
+            <span>My Bookings</span>
+          </a>
+          <a href="/worker/portal" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="briefcase" class="w-4 h-4 text-slate-400"></i>
+            <span>Worker Portal</span>
+          </a>
+          <a href="/admin" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="shield" class="w-4 h-4 text-slate-400"></i>
+            <span>Admin</span>
+          </a>
+        </nav>
+
+        <!-- HEADER ACTIONS -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="/emergency" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-red-700 bg-red-50 border border-red-200 hover:bg-red-100 transition-colors">
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+            <span>Emergency SOS</span>
+          </a>
+          <a href="/book" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/25 transition-all hover:shadow-lg hover:-translate-y-0.5">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Book a Helper</span>
+          </a>
+        </div>
+
+        <!-- MOBILE HAMBURGER BUTTON -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- MOBILE MENU DRAWER OVERLAY -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 shadow-xl space-y-3">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="/services" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="layers" class="w-4 h-4 text-brand-600"></i>
+          <span>Our Services</span>
+        </a>
+        <a href="/helpers" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="users" class="w-4 h-4 text-brand-600"></i>
+          <span>Browse Maids</span>
+        </a>
+        <a href="/book" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="calendar-check" class="w-4 h-4 text-brand-600"></i>
+          <span>Book Schedule</span>
+        </a>
+        <a href="/bookings" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="receipt" class="w-4 h-4 text-brand-600"></i>
+          <span>My Bookings</span>
+        </a>
+        <a href="/worker/portal" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="briefcase" class="w-4 h-4 text-brand-600"></i>
+          <span>Worker Portal</span>
+        </a>
+        <a href="/admin" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="shield" class="w-4 h-4 text-brand-600"></i>
+          <span>Admin Center</span>
+        </a>
+      </div>
+      <div class="pt-2 flex flex-col gap-2">
+        <a href="/emergency" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-bold text-red-700 bg-red-50 border border-red-200">
+          <i data-lucide="zap" class="w-4 h-4 text-red-600"></i>
+          <span>Need Emergency Help (Arrives in 60 mins)</span>
+        </a>
+        <a href="/presentation" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200">
+          <i data-lucide="presentation" class="w-4 h-4 text-brand-600"></i>
+          <span>View Project Presentation Slides</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE CONTENT -->
+  <main class="flex-grow">
+    
+<!-- HERO SECTION WITH INTERACTIVE SEARCH -->
+<section class="relative overflow-hidden bg-gradient-to-b from-brand-50/70 via-white to-slate-50 pt-10 pb-20 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 bg-brand-100/90 text-brand-800 border border-brand-200 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+          <span class="w-2.5 h-2.5 rounded-full bg-brand-600 animate-pulse"></span>
+          <span>Verified Domestic Workers • Police & Aadhaar Authenticated</span>
+        </div>
+
+        <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.12]">
+          Your Home, Our Care. <br class="hidden sm:inline"/>
+          <span class="bg-gradient-to-r from-brand-600 via-indigo-600 to-sky-600 bg-clip-text text-transparent">
+            Book Trusted Helpers
+          </span> <br/>
+          at Your Convenience.
+        </h1>
+
+        <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
+          Connect with verified domestic maids, hygienic home cooks, compassionate babysitters, laundry pros, and elderly care attendants. Transparent pricing, zero double-bookings, and flexible hourly or monthly plans.
+        </p>
+
+        <!-- Quick Search Engine Card -->
+        <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-200/90 space-y-3">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-brand-600"></i>
+            <span>Quick Helper Finder</span>
+          </div>
+          
+          <form action="/helpers" method="GET" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-700 mb-1">Select City</label>
+              <select name="city" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="">All Indian Metros</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi NCR">Delhi NCR</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-700 mb-1">Service Required</label>
+              <select name="service" class="w-full text-xs font-medium px-3 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="">All 6 Domestic Services</option>
+                <option value="house_cleaning">House Cleaning</option><option value="cooking_services">Cooking Services</option><option value="dishwashing">Dishwashing</option><option value="laundry_services">Laundry Services</option><option value="babysitting">Babysitting & Childcare</option><option value="elderly_assistance">Elderly Assistance</option>
+              </select>
+            </div>
+
+            <div class="flex items-end">
+              <button type="submit" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-all flex items-center justify-center gap-1.5">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                <span>Find Helpers</span>
+              </button>
+            </div>
+          </form>
+
+          <div class="pt-2 flex flex-wrap items-center gap-2 text-[11px]">
+            <span class="text-slate-400 font-medium">Popular:</span>
+            <a href="/helpers?service=house_cleaning" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-600 font-medium transition-colors">
+              🧹 Maid Cleaning
+            </a>
+            <a href="/helpers?service=cooking_services" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-600 font-medium transition-colors">
+              🍳 Daily Cook
+            </a>
+            <a href="/helpers?service=babysitting" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-600 font-medium transition-colors">
+              👶 Verified Nanny
+            </a>
+            <a href="/emergency" class="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 border border-red-200 font-bold hover:bg-red-100 transition-colors flex items-center gap-1">
+              <i data-lucide="zap" class="w-3 h-3 text-red-600"></i> SOS Help
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-4 grid grid-cols-3 gap-4 border-t border-slate-200/80">
+          <div>
+            <div class="font-heading font-extrabold text-2xl text-slate-900">12,500+</div>
+            <div class="text-xs text-slate-500 font-medium">Verified Helpers</div>
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-2xl text-brand-600 flex items-center gap-1">
+              <span>4.9★</span>
+              <span class="text-xs font-normal text-slate-500">(38k Reviews)</span>
+            </div>
+            <div class="text-xs text-slate-500 font-medium">Customer Rating</div>
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-2xl text-slate-900">&lt; 60 mins</div>
+            <div class="text-xs text-slate-500 font-medium">Instant Dispatch</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-md">
+          <div class="absolute -top-10 -right-10 w-72 h-72 bg-brand-400/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-amber-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative bg-white rounded-3xl p-6 shadow-2xl border border-slate-100 space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg">
+                  <i data-lucide="award" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h3 class="font-heading font-bold text-slate-900 text-base">Sparkle Home Guarantee</h3>
+                  <p class="text-xs text-slate-500">Zero Agency Haggling • Fixed Rates</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                Active 24x7
+              </span>
+            </div>
+
+            <!-- Spotlight Worker -->
+            <div class="bg-gradient-to-br from-slate-50 to-brand-50/40 p-4 rounded-2xl border border-slate-200/80 space-y-3">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Lakshmi Devi" class="w-14 h-14 rounded-2xl object-cover border-2 border-white shadow-md">
+                <div class="flex-grow">
+                  <div class="flex items-center gap-1.5">
+                    <h4 class="font-heading font-bold text-slate-900 text-sm">Lakshmi Devi</h4>
+                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-white">
+                      <i data-lucide="check" class="w-3 h-3 mr-0.5"></i> Verified
+                    </span>
+                  </div>
+                  <p class="text-xs text-slate-500">Hitec City / Madhapur, Hyderabad</p>
+                  <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 mt-1">
+                    <span class="text-amber-500 flex items-center">
+                      <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 inline mr-0.5"></i>
+                      4.95
+                    </span>
+                    <span class="text-slate-300">•</span>
+                    <span>7 yrs experience</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-slate-200/60 text-xs">
+                <div>
+                  <span class="text-slate-400">Starting from</span>
+                  <div class="font-bold text-brand-700 text-sm">₹220/hour</div>
+                </div>
+                <div>
+                  <span class="text-slate-400">Monthly package</span>
+                  <div class="font-bold text-slate-800 text-sm">₹4200/mo</div>
+                </div>
+                <a href="/book?worker_id=w_101" class="px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold shadow-sm transition-colors">
+                  Instant Book
+                </a>
+              </div>
+            </div>
+
+            <div class="space-y-2.5 text-xs text-slate-600">
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <span><strong>No Double-Bookings:</strong> Worker availability calendar locks slots in real time.</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <span><strong>Aadhaar & Police Vetted:</strong> Every domestic worker's KYC is verified before listing.</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <span><strong>Secure Payments & OTP:</strong> Pay via UPI, Cards or Cash with OTP service start.</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="/helpers" class="w-full block text-center py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs tracking-wide uppercase transition-colors shadow-lg">
+                View All 8+ Available Domestic Helpers →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6 SERVICES SECTION -->
+<section class="py-20 bg-white border-t border-slate-200/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
+        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+        <span>Complete Domestic Catalog</span>
+      </div>
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight">
+        6 Pillars of Sparkle Home Care
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base">
+        Select from specialized domestic assistance designed to handle every daily household chore with verified care.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div class="group bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-brand-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-600/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+              Popular
+            </span>
+          </div>
+
+          <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">
+            House Cleaning
+          </h3>
+          <p class="text-xs font-medium text-brand-700 mt-1 mb-3">
+            Daily cleaning, sweeping, mopping and dusting
+          </p>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Thorough daily cleaning covering living room, bedrooms, kitchen floors, and balconies. Sweeping, mopping with disinfectant, and dusting.
+          </p>
+
+          <div class="space-y-1.5 mb-6 bg-white/80 p-3 rounded-2xl border border-slate-200/60">
+            <span class="text-[11px] font-bold text-slate-700 block mb-1">What's Included:</span>
+            
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Brooming & dust removal in all rooms</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Floor mopping with herbal antibacterial solutions</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Furniture, TV unit & tabletop dusting</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between">
+          <div>
+            <div class="text-[11px] text-slate-400">Hourly / Monthly</div>
+            <div class="text-sm font-extrabold text-slate-900">
+              ₹199<span class="text-xs font-normal text-slate-500">/hr</span>
+              <span class="text-slate-300 font-light mx-1">|</span>
+              <span class="text-brand-700">₹3500</span><span class="text-xs font-normal text-slate-500">/mo</span>
+            </div>
+          </div>
+          <a href="/book?service_id=house_cleaning" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-brand-600 transition-colors shadow-sm">
+            Book Service
+          </a>
+        </div>
+      </div>
+      <div class="group bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-brand-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-600/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="utensils" class="w-6 h-6"></i>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+              High Demand
+            </span>
+          </div>
+
+          <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">
+            Cooking Services
+          </h3>
+          <p class="text-xs font-medium text-brand-700 mt-1 mb-3">
+            Daily cooking, meal preparation and kitchen assistance
+          </p>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Authentic, hygienic home-cooked meals prepared in your kitchen according to your dietary preferences (North Indian, South Indian, Sattvic, or healthy diet).
+          </p>
+
+          <div class="space-y-1.5 mb-6 bg-white/80 p-3 rounded-2xl border border-slate-200/60">
+            <span class="text-[11px] font-bold text-slate-700 block mb-1">What's Included:</span>
+            
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Vegetable chopping, peeling & gravy base prep</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Cooking breakfast, lunch or dinner dishes</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Roti / chapati making & rice cooking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between">
+          <div>
+            <div class="text-[11px] text-slate-400">Hourly / Monthly</div>
+            <div class="text-sm font-extrabold text-slate-900">
+              ₹249<span class="text-xs font-normal text-slate-500">/hr</span>
+              <span class="text-slate-300 font-light mx-1">|</span>
+              <span class="text-brand-700">₹4500</span><span class="text-xs font-normal text-slate-500">/mo</span>
+            </div>
+          </div>
+          <a href="/book?service_id=cooking_services" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-brand-600 transition-colors shadow-sm">
+            Book Service
+          </a>
+        </div>
+      </div>
+      <div class="group bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-brand-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-600/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="disc" class="w-6 h-6"></i>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+              Daily Essential
+            </span>
+          </div>
+
+          <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">
+            Dishwashing
+          </h3>
+          <p class="text-xs font-medium text-brand-700 mt-1 mb-3">
+            Cleaning utensils and maintaining kitchen hygiene
+          </p>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Thorough scrubbing and sanitization of cooking vessels, plates, glassware, and cutlery. Sink cleaning and dry dish organization.
+          </p>
+
+          <div class="space-y-1.5 mb-6 bg-white/80 p-3 rounded-2xl border border-slate-200/60">
+            <span class="text-[11px] font-bold text-slate-700 block mb-1">What's Included:</span>
+            
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Scrubbing burnt oil & grease from pots and pans</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Soap washing and thorough water rinsing</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Sink scrub, drain descaling & sanitization</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between">
+          <div>
+            <div class="text-[11px] text-slate-400">Hourly / Monthly</div>
+            <div class="text-sm font-extrabold text-slate-900">
+              ₹149<span class="text-xs font-normal text-slate-500">/hr</span>
+              <span class="text-slate-300 font-light mx-1">|</span>
+              <span class="text-brand-700">₹2200</span><span class="text-xs font-normal text-slate-500">/mo</span>
+            </div>
+          </div>
+          <a href="/book?service_id=dishwashing" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-brand-600 transition-colors shadow-sm">
+            Book Service
+          </a>
+        </div>
+      </div>
+      <div class="group bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-brand-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-600/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="shirt" class="w-6 h-6"></i>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+              Care & Fresh
+            </span>
+          </div>
+
+          <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">
+            Laundry Services
+          </h3>
+          <p class="text-xs font-medium text-brand-700 mt-1 mb-3">
+            Washing, ironing and folding clothes
+          </p>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Complete laundry care including washing machine management or delicate hand-washing, clothes drying line hanging, neat folding, and steam ironing.
+          </p>
+
+          <div class="space-y-1.5 mb-6 bg-white/80 p-3 rounded-2xl border border-slate-200/60">
+            <span class="text-[11px] font-bold text-slate-700 block mb-1">What's Included:</span>
+            
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Sorting whites & colored garments</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Machine wash / hand wash delicate fabrics</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Drying clothes on balcony/indoor stands</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between">
+          <div>
+            <div class="text-[11px] text-slate-400">Hourly / Monthly</div>
+            <div class="text-sm font-extrabold text-slate-900">
+              ₹179<span class="text-xs font-normal text-slate-500">/hr</span>
+              <span class="text-slate-300 font-light mx-1">|</span>
+              <span class="text-brand-700">₹2800</span><span class="text-xs font-normal text-slate-500">/mo</span>
+            </div>
+          </div>
+          <a href="/book?service_id=laundry_services" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-brand-600 transition-colors shadow-sm">
+            Book Service
+          </a>
+        </div>
+      </div>
+      <div class="group bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-brand-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-600/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="baby" class="w-6 h-6"></i>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+              Verified Nannies
+            </span>
+          </div>
+
+          <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">
+            Babysitting & Childcare
+          </h3>
+          <p class="text-xs font-medium text-brand-700 mt-1 mb-3">
+            Childcare and supervision services
+          </p>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Attentive, loving and safe supervision of infants, toddlers, and school-age kids. Feeding, playing, nap routine, and constant vigilant supervision.
+          </p>
+
+          <div class="space-y-1.5 mb-6 bg-white/80 p-3 rounded-2xl border border-slate-200/60">
+            <span class="text-[11px] font-bold text-slate-700 block mb-1">What's Included:</span>
+            
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Feeding, warming milk & baby meal assistance</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Diaper changing, hygiene & clothing care</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Engaging educational play, storytelling & drawing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between">
+          <div>
+            <div class="text-[11px] text-slate-400">Hourly / Monthly</div>
+            <div class="text-sm font-extrabold text-slate-900">
+              ₹299<span class="text-xs font-normal text-slate-500">/hr</span>
+              <span class="text-slate-300 font-light mx-1">|</span>
+              <span class="text-brand-700">₹6500</span><span class="text-xs font-normal text-slate-500">/mo</span>
+            </div>
+          </div>
+          <a href="/book?service_id=babysitting" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-brand-600 transition-colors shadow-sm">
+            Book Service
+          </a>
+        </div>
+      </div>
+      <div class="group bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-brand-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-600/20 group-hover:scale-110 transition-transform">
+              <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+              Compassionate
+            </span>
+          </div>
+
+          <h3 class="font-heading font-bold text-xl text-slate-900 group-hover:text-brand-600 transition-colors">
+            Elderly Assistance
+          </h3>
+          <p class="text-xs font-medium text-brand-700 mt-1 mb-3">
+            Non-medical daily assistance for elderly people
+          </p>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Caring, non-medical companionship for senior citizens. Walking mobility support, medicine schedule reminders, conversation, and warm home assistance.
+          </p>
+
+          <div class="space-y-1.5 mb-6 bg-white/80 p-3 rounded-2xl border border-slate-200/60">
+            <span class="text-[11px] font-bold text-slate-700 block mb-1">What's Included:</span>
+            
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Walking & gentle mobility assistance around home</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Timely medication schedule reminders</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] text-slate-600">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <span>Serving warm meals & hydration support</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between">
+          <div>
+            <div class="text-[11px] text-slate-400">Hourly / Monthly</div>
+            <div class="text-sm font-extrabold text-slate-900">
+              ₹279<span class="text-xs font-normal text-slate-500">/hr</span>
+              <span class="text-slate-300 font-light mx-1">|</span>
+              <span class="text-brand-700">₹7000</span><span class="text-xs font-normal text-slate-500">/mo</span>
+            </div>
+          </div>
+          <a href="/book?service_id=elderly_assistance" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-900 hover:bg-brand-600 transition-colors shadow-sm">
+            Book Service
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="py-20 bg-slate-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-900 text-brand-300 border border-brand-700">
+        <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+        <span>Simple 60-Second Process</span>
+      </div>
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+        How Sparkle Home Works
+      </h2>
+      <p class="text-slate-400 text-sm">
+        From search to spotless home in 4 seamless digital steps.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="bg-slate-800/70 border border-slate-700/80 rounded-3xl p-6 relative">
+        <div class="text-4xl font-extrabold text-brand-500/40 mb-3 font-mono">01</div>
+        <h3 class="font-heading font-bold text-lg text-white mb-2">Select Service</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Choose from House Cleaning, Cooking, Dishwashing, Laundry, Babysitting, or Elderly Assistance.
+        </p>
+      </div>
+
+      <div class="bg-slate-800/70 border border-slate-700/80 rounded-3xl p-6 relative">
+        <div class="text-4xl font-extrabold text-brand-500/40 mb-3 font-mono">02</div>
+        <h3 class="font-heading font-bold text-lg text-white mb-2">Pick Verified Helper</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Filter by your locality, compare verified credentials, read genuine customer reviews and rates.
+        </p>
+      </div>
+
+      <div class="bg-slate-800/70 border border-slate-700/80 rounded-3xl p-6 relative">
+        <div class="text-4xl font-extrabold text-brand-500/40 mb-3 font-mono">03</div>
+        <h3 class="font-heading font-bold text-lg text-white mb-2">Schedule & Pay</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Select preferred date and morning/evening time slot. Pay securely via Razorpay UPI, Card, or Cash.
+        </p>
+      </div>
+
+      <div class="bg-slate-800/70 border border-slate-700/80 rounded-3xl p-6 relative">
+        <div class="text-4xl font-extrabold text-brand-500/40 mb-3 font-mono">04</div>
+        <h3 class="font-heading font-bold text-lg text-white mb-2">Service & Review</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Helper arrives on time, verifies OTP, performs tasks with excellence. Rate and review after service.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/book" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-xl shadow-brand-600/30 transition-all hover:scale-105">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>Book Your First Domestic Helper Now</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY SOS BANNER -->
+<section class="py-12 bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-inner">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-4">
+      <div class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0 text-white">
+        <i data-lucide="alarm-clock" class="w-7 h-7"></i>
+      </div>
+      <div>
+        <h3 class="font-heading font-extrabold text-2xl text-white">Need Urgent Domestic Help in 60 Minutes?</h3>
+        <p class="text-red-100 text-xs sm:text-sm mt-0.5">
+          Surprise guests or regular maid absent? Tap our emergency dispatch for rapid helper arrival.
+        </p>
+      </div>
+    </div>
+    <a href="/emergency" class="px-6 py-3 rounded-2xl bg-white text-red-700 hover:bg-red-50 font-bold text-xs sm:text-sm shadow-lg whitespace-nowrap transition-colors flex items-center gap-2">
+      <i data-lucide="zap" class="w-4 h-4 text-red-600"></i>
+      <span>Request 1-Hour Emergency Maid</span>
+    </a>
+  </div>
+</section>
+
+  </main>
+
+  <!-- MOBILE STICKY BOTTOM NAVIGATION BAR -->
+  <div class="fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 z-40 lg:hidden shadow-lg py-2 px-3">
+    <div class="grid grid-cols-5 text-center text-[10px] font-semibold text-slate-600">
+      <a href="/" class="flex flex-col items-center gap-1 text-brand-600">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>Home</span>
+      </a>
+      <a href="/helpers" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="search" class="w-5 h-5"></i>
+        <span>Helpers</span>
+      </a>
+      <a href="/book" class="flex flex-col items-center gap-1 text-white bg-brand-600 rounded-xl py-1 px-1 -mt-3 shadow-md shadow-brand-600/30">
+        <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+        <span>Book</span>
+      </a>
+      <a href="/bookings" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="clock" class="w-5 h-5"></i>
+        <span>Bookings</span>
+      </a>
+      <a href="/worker/portal" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="user-check" class="w-5 h-5"></i>
+        <span>Worker</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </div>
+            <span class="font-heading font-extrabold text-2xl text-white">
+              Sparkle<span class="text-brand-400">Home</span>
+            </span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+            India's premier smart maid and domestic help booking platform. Connecting urban households with verified domestic workers: house cleaners, cooks, babysitters, laundry pros, and elderly companions.
+          </p>
+          <div class="flex items-center gap-3 pt-2 text-xs text-slate-400">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> Police Verified
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i> Hyperlocal Search
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="credit-card" class="w-3.5 h-3.5 text-blue-400"></i> Razorpay & Cash
+            </span>
+          </div>
+        </div>
+
+        <!-- 6 Core Services -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Domestic Services
+          </h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="/helpers?service=house_cleaning" class="hover:text-white transition-colors">House Cleaning</a></li>
+            <li><a href="/helpers?service=cooking_services" class="hover:text-white transition-colors">Cooking Services</a></li>
+            <li><a href="/helpers?service=dishwashing" class="hover:text-white transition-colors">Dishwashing & Hygiene</a></li>
+            <li><a href="/helpers?service=laundry_services" class="hover:text-white transition-colors">Laundry & Steam Ironing</a></li>
+            <li><a href="/helpers?service=babysitting" class="hover:text-white transition-colors">Babysitting & Childcare</a></li>
+            <li><a href="/helpers?service=elderly_assistance" class="hover:text-white transition-colors">Elderly Assistance</a></li>
+          </ul>
+        </div>
+
+        <!-- Platform Links -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Platform Roles
+          </h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="/book" class="hover:text-white transition-colors">Customer Booking Flow</a></li>
+            <li><a href="/bookings" class="hover:text-white transition-colors">Manage Bookings</a></li>
+            <li><a href="/worker/portal" class="hover:text-white transition-colors">Maid / Worker Portal</a></li>
+            <li><a href="/worker/portal" class="hover:text-white transition-colors">Register as Helper</a></li>
+            <li><a href="/admin" class="hover:text-white transition-colors">Admin Verification Desk</a></li>
+            <li><a href="/emergency" class="hover:text-white transition-colors">Emergency Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Locations & Academic -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Project & Locations
+          </h4>
+          <p class="text-xs text-slate-400">
+            Active Hubs: Hyderabad, Bengaluru, Mumbai, Delhi NCR, Pune.
+          </p>
+          <div class="pt-2">
+            <a href="/presentation" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-600 text-white text-xs font-bold hover:bg-brand-500 transition-colors w-full justify-center">
+              <i data-lucide="presentation" class="w-4 h-4"></i>
+              <span>View PPT Presentation</span>
+            </a>
+          </div>
+          <div class="pt-1">
+            <a href="/download-ppt" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold hover:bg-slate-700 transition-colors w-full justify-center">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download .PPTX File</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div>
+          © 2026 Sparkle Home Platform. Built for Indian Households & Domestic Worker Empowerment.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/presentation" class="hover:text-slate-300">Viva Guide</a>
+          <a href="/admin" class="hover:text-slate-300">Admin Login</a>
+          <a href="/worker/portal" class="hover:text-slate-300">Helper KYC</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GLOBAL NOTIFICATION TOAST -->
+  <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 max-w-sm w-full bg-slate-900 text-white p-4 rounded-2xl shadow-2xl border border-slate-700 flex items-start gap-3 pointer-events-none">
+    <div id="toast-icon" class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <div class="flex-grow">
+      <div id="toast-title" class="font-bold text-sm">Success</div>
+      <div id="toast-message" class="text-xs text-slate-300 mt-0.5">Your action has been completed.</div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    function showToast(title, message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastTitle = document.getElementById('toast-title');
+      const toastMessage = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
+
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+
+      if (type === 'success') {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
+      } else if (type === 'error') {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="alert-circle" class="w-4 h-4"></i>';
+      } else {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="info" class="w-4 h-4"></i>';
+      }
+      lucide.createIcons();
+
+      toast.classList.remove('translate-y-[-150%]', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-[-150%]', 'pointer-events-none');
+      }, 3500);
+    }
+  </script>
+  
+</body>
+</html>

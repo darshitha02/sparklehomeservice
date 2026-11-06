@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domestic Helper & Maid Portal — Sparkle Home</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706'
+            },
+            emerald: {
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857'
+            }
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+    .badge-verified {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+    .badge-emergency {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white pb-16 md:pb-0">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-gradient-to-r from-brand-900 via-brand-800 to-indigo-900 text-white text-xs py-2 px-4 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-slate-900 uppercase tracking-wide">
+          ✦ Trust First
+        </span>
+        <span class="hidden sm:inline text-slate-200">
+          All helpers 100% Aadhaar & Police Verified. Instant booking in Hyderabad, Bengaluru, Mumbai & Delhi NCR.
+        </span>
+        <span class="sm:hidden text-slate-200">
+          Verified domestic maids, cooks & nannies in 60 mins.
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-slate-300">
+        <a href="/emergency" class="flex items-center gap-1 text-red-300 hover:text-white font-semibold">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>Emergency 1-Hr Help</span>
+        </a>
+        <span class="text-slate-500">|</span>
+        <a href="/presentation" class="hover:text-white font-medium flex items-center gap-1">
+          <i data-lucide="presentation" class="w-3.5 h-3.5 text-blue-300"></i>
+          <span>Project PPT Deck</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- BRAND LOGO -->
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-heading font-extrabold text-2xl tracking-tight text-slate-900">
+                Sparkle<span class="text-brand-600">Home</span>
+              </span>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-brand-50 text-brand-700 border border-brand-200">
+                Smart Maid
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-500 -mt-1 hidden sm:block font-medium">
+              Your Home, Our Care • Trusted Helpers
+            </p>
+          </div>
+        </a>
+
+        <!-- DESKTOP NAVIGATION LINKS -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+          <a href="/services" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="layers" class="w-4 h-4 text-slate-400"></i>
+            <span>Services (6)</span>
+          </a>
+          <a href="/helpers" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+            <span>Browse Helpers</span>
+          </a>
+          <a href="/book" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="calendar-check" class="w-4 h-4 text-slate-400"></i>
+            <span>Book Now</span>
+          </a>
+          <a href="/bookings" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="receipt" class="w-4 h-4 text-slate-400"></i>
+            <span>My Bookings</span>
+          </a>
+          <a href="/worker/portal" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="briefcase" class="w-4 h-4 text-slate-400"></i>
+            <span>Worker Portal</span>
+          </a>
+          <a href="/admin" class="hover:text-brand-600 transition-colors flex items-center gap-1.5">
+            <i data-lucide="shield" class="w-4 h-4 text-slate-400"></i>
+            <span>Admin</span>
+          </a>
+        </nav>
+
+        <!-- HEADER ACTIONS -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="/emergency" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-red-700 bg-red-50 border border-red-200 hover:bg-red-100 transition-colors">
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+            <span>Emergency SOS</span>
+          </a>
+          <a href="/book" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/25 transition-all hover:shadow-lg hover:-translate-y-0.5">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Book a Helper</span>
+          </a>
+        </div>
+
+        <!-- MOBILE HAMBURGER BUTTON -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- MOBILE MENU DRAWER OVERLAY -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 shadow-xl space-y-3">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="/services" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="layers" class="w-4 h-4 text-brand-600"></i>
+          <span>Our Services</span>
+        </a>
+        <a href="/helpers" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="users" class="w-4 h-4 text-brand-600"></i>
+          <span>Browse Maids</span>
+        </a>
+        <a href="/book" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="calendar-check" class="w-4 h-4 text-brand-600"></i>
+          <span>Book Schedule</span>
+        </a>
+        <a href="/bookings" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="receipt" class="w-4 h-4 text-brand-600"></i>
+          <span>My Bookings</span>
+        </a>
+        <a href="/worker/portal" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="briefcase" class="w-4 h-4 text-brand-600"></i>
+          <span>Worker Portal</span>
+        </a>
+        <a href="/admin" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 hover:bg-brand-50 hover:text-brand-700">
+          <i data-lucide="shield" class="w-4 h-4 text-brand-600"></i>
+          <span>Admin Center</span>
+        </a>
+      </div>
+      <div class="pt-2 flex flex-col gap-2">
+        <a href="/emergency" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-bold text-red-700 bg-red-50 border border-red-200">
+          <i data-lucide="zap" class="w-4 h-4 text-red-600"></i>
+          <span>Need Emergency Help (Arrives in 60 mins)</span>
+        </a>
+        <a href="/presentation" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200">
+          <i data-lucide="presentation" class="w-4 h-4 text-brand-600"></i>
+          <span>View Project Presentation Slides</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE CONTENT -->
+  <main class="flex-grow">
+    
+<div class="bg-gradient-to-b from-brand-900 to-slate-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="space-y-1">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30">
+          <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+          <span>Worker & Partner Interface</span>
+        </span>
+        <h1 class="font-heading font-extrabold text-3xl text-white">
+          Domestic Helper Workspace
+        </h1>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          Control your schedule, accept incoming requests, and track weekly direct bank earnings.
+        </p>
+      </div>
+
+      <div class="flex items-center bg-slate-800 p-1.5 rounded-2xl border border-slate-700 text-xs font-bold">
+        <button onclick="switchView('dashboard')" id="btn-dash" class="px-4 py-2 rounded-xl bg-brand-600 text-white transition-colors">
+          Helper Dashboard
+        </button>
+        <button onclick="switchView('register')" id="btn-reg" class="px-4 py-2 rounded-xl text-slate-300 hover:text-white transition-colors">
+          New Helper Registration
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+  <!-- VIEW 1: DASHBOARD -->
+  <div id="view-dashboard" class="space-y-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="md:col-span-2 bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+        <div class="flex items-center gap-4">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Lakshmi Devi" class="w-16 h-16 rounded-2xl object-cover border-2 border-brand-500 shadow-md">
+          <div class="space-y-0.5">
+            <div class="flex items-center gap-2">
+              <h2 class="font-heading font-extrabold text-xl text-slate-900">Lakshmi Devi</h2>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-white">
+                ✓ Verified
+              </span>
+            </div>
+            <p class="text-xs text-slate-500">Hitec City / Madhapur, Hyderabad</p>
+            <div class="flex items-center gap-2 text-xs font-semibold text-slate-700">
+              <span class="text-amber-500 flex items-center">
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 mr-0.5"></i>
+                4.95 (148 ratings)
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-700 block">Duty Status</span>
+            <span id="duty-label" class="text-xs font-semibold text-emerald-600">
+              ● Available Today
+            </span>
+          </div>
+          <button onclick="toggleDuty()" id="duty-btn" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-colors">
+            Toggle Status
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">This Month</span>
+          <div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+            <i data-lucide="wallet" class="w-5 h-5"></i>
+          </div>
+        </div>
+        <div>
+          <div class="font-heading font-extrabold text-3xl text-slate-900">₹24,800</div>
+          <p class="text-[11px] text-emerald-600 font-semibold mt-1">✓ Payout transferred to Bank</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Jobs Completed</span>
+          <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+          </div>
+        </div>
+        <div>
+          <div class="font-heading font-extrabold text-3xl text-slate-900">148</div>
+          <p class="text-[11px] text-slate-500 mt-1">100% Punctuality rating</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQUESTS -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div>
+          <h3 class="font-heading font-extrabold text-xl text-slate-900 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+            <span>Live Booking Requests</span>
+          </h3>
+          <p class="text-xs text-slate-500">Customers nearby requesting your domestic services.</p>
+        </div>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
+          2 Pending Requests
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-3" id="req-1">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-lg border border-brand-200">
+              House Cleaning + Dishwashing
+            </span>
+            <span class="font-bold text-slate-900 text-sm">₹649 Fare</span>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-base text-slate-900">Aparna CyberLife, Gachibowli</h4>
+            <p class="text-xs text-slate-500">Customer: Vikram Sharma (3 BHK Apartment)</p>
+            <p class="text-xs text-slate-600 mt-1"><strong>Time:</strong> Tomorrow, 08:00 AM - 10:30 AM</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200">
+            <button onclick="handleRequest('req-1', 'accepted')" class="py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors">
+              Accept Request
+            </button>
+            <button onclick="handleRequest('req-1', 'declined')" class="py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs transition-colors">
+              Decline
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-3" id="req-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-200">
+              Daily Cooking (Monthly Plan)
+            </span>
+            <span class="font-bold text-emerald-600 text-sm">₹4,500/Month</span>
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-base text-slate-900">My Home Bhooja, Hitec City</h4>
+            <p class="text-xs text-slate-500">Customer: Neha Gupta (North Indian Meals for 2)</p>
+            <p class="text-xs text-slate-600 mt-1"><strong>Daily Slot:</strong> 06:30 PM - 08:00 PM</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200">
+            <button onclick="handleRequest('req-2', 'accepted')" class="py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors">
+              Accept Request
+            </button>
+            <button onclick="handleRequest('req-2', 'declined')" class="py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs transition-colors">
+              Decline
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 2: REGISTRATION -->
+  <div id="view-register" class="hidden max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
+    <div class="space-y-2 pb-4 border-b border-slate-100">
+      <h3 class="font-heading font-extrabold text-2xl text-slate-900">
+        Register as a Domestic Service Provider
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-500">
+        Earn dignified income with full transparency, direct UPI/bank payouts, and zero middlemen exploitation.
+      </p>
+    </div>
+
+    <form id="worker-reg-form" class="space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Full Name (As per Aadhaar) *</label>
+          <input type="text" id="w-name" required placeholder="e.g. Sarita Devi" class="w-full text-xs font-medium px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Number (For WhatsApp & SMS) *</label>
+          <input type="tel" id="w-phone" required placeholder="e.g. 9811223344" class="w-full text-xs font-medium px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Operating City *</label>
+          <select id="w-city" class="w-full text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi NCR">Delhi NCR</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Locality / Neighborhood *</label>
+          <input type="text" id="w-locality" required placeholder="e.g. Madhapur / Kukatpally" class="w-full text-xs font-medium px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-2">Select Services You Offer *</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+          <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 text-xs font-semibold cursor-pointer hover:bg-brand-50">
+            <input type="checkbox" name="services" value="house_cleaning" checked class="text-brand-600 rounded">
+            <span>House Cleaning</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 text-xs font-semibold cursor-pointer hover:bg-brand-50">
+            <input type="checkbox" name="services" value="cooking_services" checked class="text-brand-600 rounded">
+            <span>Cooking Services</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 text-xs font-semibold cursor-pointer hover:bg-brand-50">
+            <input type="checkbox" name="services" value="dishwashing" checked class="text-brand-600 rounded">
+            <span>Dishwashing</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 text-xs font-semibold cursor-pointer hover:bg-brand-50">
+            <input type="checkbox" name="services" value="laundry_services" class="text-brand-600 rounded">
+            <span>Laundry & Ironing</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 text-xs font-semibold cursor-pointer hover:bg-brand-50">
+            <input type="checkbox" name="services" value="babysitting" class="text-brand-600 rounded">
+            <span>Babysitting</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 text-xs font-semibold cursor-pointer hover:bg-brand-50">
+            <input type="checkbox" name="services" value="elderly_assistance" class="text-brand-600 rounded">
+            <span>Elderly Care</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Expected Rate / Hour (₹)</label>
+          <input type="number" id="w-hourly" value="220" class="w-full text-xs font-medium px-3.5 py-2.5 rounded-xl border border-slate-300">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Monthly Package (₹)</label>
+          <input type="number" id="w-monthly" value="4500" class="w-full text-xs font-medium px-3.5 py-2.5 rounded-xl border border-slate-300">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Years of Experience</label>
+          <input type="number" id="w-exp" value="5" class="w-full text-xs font-medium px-3.5 py-2.5 rounded-xl border border-slate-300">
+        </div>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-2">
+        <div class="flex items-center gap-2 text-xs font-bold text-amber-900">
+          <i data-lucide="shield-alert" class="w-4 h-4 text-amber-600"></i>
+          <span>Mandatory Identity Verification (KYC)</span>
+        </div>
+        <p class="text-[11px] text-amber-800 leading-relaxed">
+          Sparkle Home verifies 100% of helpers. Upload photo and enter 12-digit Aadhaar number for police verification.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          <input type="text" placeholder="12-Digit Aadhaar No. (e.g. 5412 XXXX 8910)" class="text-xs p-2.5 rounded-xl border border-amber-300 bg-white">
+          <input type="file" class="text-xs p-1.5 rounded-xl border border-amber-300 bg-white cursor-pointer">
+        </div>
+      </div>
+
+      <button type="submit" class="w-full py-4 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-heading font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-brand-600/30 transition-all">
+        Submit Registration for Verification →
+      </button>
+    </form>
+  </div>
+
+</div>
+
+  </main>
+
+  <!-- MOBILE STICKY BOTTOM NAVIGATION BAR -->
+  <div class="fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 z-40 lg:hidden shadow-lg py-2 px-3">
+    <div class="grid grid-cols-5 text-center text-[10px] font-semibold text-slate-600">
+      <a href="/" class="flex flex-col items-center gap-1 text-brand-600">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>Home</span>
+      </a>
+      <a href="/helpers" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="search" class="w-5 h-5"></i>
+        <span>Helpers</span>
+      </a>
+      <a href="/book" class="flex flex-col items-center gap-1 text-white bg-brand-600 rounded-xl py-1 px-1 -mt-3 shadow-md shadow-brand-600/30">
+        <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+        <span>Book</span>
+      </a>
+      <a href="/bookings" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="clock" class="w-5 h-5"></i>
+        <span>Bookings</span>
+      </a>
+      <a href="/worker/portal" class="flex flex-col items-center gap-1 hover:text-brand-600">
+        <i data-lucide="user-check" class="w-5 h-5"></i>
+        <span>Worker</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </div>
+            <span class="font-heading font-extrabold text-2xl text-white">
+              Sparkle<span class="text-brand-400">Home</span>
+            </span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+            India's premier smart maid and domestic help booking platform. Connecting urban households with verified domestic workers: house cleaners, cooks, babysitters, laundry pros, and elderly companions.
+          </p>
+          <div class="flex items-center gap-3 pt-2 text-xs text-slate-400">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> Police Verified
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i> Hyperlocal Search
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700">
+              <i data-lucide="credit-card" class="w-3.5 h-3.5 text-blue-400"></i> Razorpay & Cash
+            </span>
+          </div>
+        </div>
+
+        <!-- 6 Core Services -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Domestic Services
+          </h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="/helpers?service=house_cleaning" class="hover:text-white transition-colors">House Cleaning</a></li>
+            <li><a href="/helpers?service=cooking_services" class="hover:text-white transition-colors">Cooking Services</a></li>
+            <li><a href="/helpers?service=dishwashing" class="hover:text-white transition-colors">Dishwashing & Hygiene</a></li>
+            <li><a href="/helpers?service=laundry_services" class="hover:text-white transition-colors">Laundry & Steam Ironing</a></li>
+            <li><a href="/helpers?service=babysitting" class="hover:text-white transition-colors">Babysitting & Childcare</a></li>
+            <li><a href="/helpers?service=elderly_assistance" class="hover:text-white transition-colors">Elderly Assistance</a></li>
+          </ul>
+        </div>
+
+        <!-- Platform Links -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Platform Roles
+          </h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="/book" class="hover:text-white transition-colors">Customer Booking Flow</a></li>
+            <li><a href="/bookings" class="hover:text-white transition-colors">Manage Bookings</a></li>
+            <li><a href="/worker/portal" class="hover:text-white transition-colors">Maid / Worker Portal</a></li>
+            <li><a href="/worker/portal" class="hover:text-white transition-colors">Register as Helper</a></li>
+            <li><a href="/admin" class="hover:text-white transition-colors">Admin Verification Desk</a></li>
+            <li><a href="/emergency" class="hover:text-white transition-colors">Emergency Dispatch</a></li>
+          </ul>
+        </div>
+
+        <!-- Locations & Academic -->
+        <div class="space-y-3">
+          <h4 class="text-white font-heading font-bold text-sm tracking-wider uppercase">
+            Project & Locations
+          </h4>
+          <p class="text-xs text-slate-400">
+            Active Hubs: Hyderabad, Bengaluru, Mumbai, Delhi NCR, Pune.
+          </p>
+          <div class="pt-2">
+            <a href="/presentation" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-600 text-white text-xs font-bold hover:bg-brand-500 transition-colors w-full justify-center">
+              <i data-lucide="presentation" class="w-4 h-4"></i>
+              <span>View PPT Presentation</span>
+            </a>
+          </div>
+          <div class="pt-1">
+            <a href="/download-ppt" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold hover:bg-slate-700 transition-colors w-full justify-center">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download .PPTX File</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div>
+          © 2026 Sparkle Home Platform. Built for Indian Households & Domestic Worker Empowerment.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/presentation" class="hover:text-slate-300">Viva Guide</a>
+          <a href="/admin" class="hover:text-slate-300">Admin Login</a>
+          <a href="/worker/portal" class="hover:text-slate-300">Helper KYC</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GLOBAL NOTIFICATION TOAST -->
+  <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] transition-transform duration-300 max-w-sm w-full bg-slate-900 text-white p-4 rounded-2xl shadow-2xl border border-slate-700 flex items-start gap-3 pointer-events-none">
+    <div id="toast-icon" class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <div class="flex-grow">
+      <div id="toast-title" class="font-bold text-sm">Success</div>
+      <div id="toast-message" class="text-xs text-slate-300 mt-0.5">Your action has been completed.</div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    function showToast(title, message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastTitle = document.getElementById('toast-title');
+      const toastMessage = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
+
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+
+      if (type === 'success') {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
+      } else if (type === 'error') {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="alert-circle" class="w-4 h-4"></i>';
+      } else {
+        toastIcon.className = 'w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5';
+        toastIcon.innerHTML = '<i data-lucide="info" class="w-4 h-4"></i>';
+      }
+      lucide.createIcons();
+
+      toast.classList.remove('translate-y-[-150%]', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-[-150%]', 'pointer-events-none');
+      }, 3500);
+    }
+  </script>
+  
+<script>
+  let isAvailable = true;
+
+  function switchView(view) {
+    if (view === 'dashboard') {
+      document.getElementById('view-dashboard').classList.remove('hidden');
+      document.getElementById('view-register').classList.add('hidden');
+      document.getElementById('btn-dash').className = 'px-4 py-2 rounded-xl bg-brand-600 text-white transition-colors';
+      document.getElementById('btn-reg').className = 'px-4 py-2 rounded-xl text-slate-300 hover:text-white transition-colors';
+    } else {
+      document.getElementById('view-dashboard').classList.add('hidden');
+      document.getElementById('view-register').classList.remove('hidden');
+      document.getElementById('btn-reg').className = 'px-4 py-2 rounded-xl bg-brand-600 text-white transition-colors';
+      document.getElementById('btn-dash').className = 'px-4 py-2 rounded-xl text-slate-300 hover:text-white transition-colors';
+    }
+    lucide.createIcons();
+  }
+
+  function toggleDuty() {
+    isAvailable = !isAvailable;
+    const label = document.getElementById('duty-label');
+    const btn = document.getElementById('duty-btn');
+
+    if (isAvailable) {
+      label.textContent = '● Available Today';
+      label.className = 'text-xs font-semibold text-emerald-600';
+      btn.className = 'px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-colors';
+      showToast('Duty Status', 'You are now marked Available Today.');
+    } else {
+      label.textContent = '● On Leave';
+      label.className = 'text-xs font-semibold text-slate-400';
+      btn.className = 'px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-600 hover:bg-slate-700 shadow-sm transition-colors';
+      showToast('Duty Status', 'You are now marked On Leave.', 'info');
+    }
+  }
+
+  function handleRequest(reqId, action) {
+    const el = document.getElementById(reqId);
+    if (action === 'accepted') {
+      el.innerHTML = '<div class="p-4 text-center font-bold text-xs text-emerald-700 bg-emerald-100 rounded-xl">✓ Request Accepted! Customer has been notified.</div>';
+      showToast('Booking Accepted', 'Added to your upcoming job schedule.');
+    } else {
+      el.remove();
+      showToast('Request Declined', 'Request removed from your queue.', 'info');
+    }
+  }
+
+  document.getElementById('worker-reg-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    showToast('Registration Submitted!', 'Your profile is sent for Admin KYC & Police verification.');
+    setTimeout(() => {
+      switchView('dashboard');
+    }, 1200);
+  });
+</script>
+
+</body>
+</html>
